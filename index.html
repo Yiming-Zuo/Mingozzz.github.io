@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang>
-<head><meta name="generator" content="Hexo 3.8.0">
+<html class="theme-next muse use-motion" lang="">
+<head>
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -36,50 +43,60 @@
 
 
 
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
 
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="在读码农">
+  <meta name="description" content="在读码农">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mingozzz的个人博客">
 <meta property="og:url" content="http://yoursite.com/index.html">
@@ -92,37 +109,19 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
   };
 </script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/">
-
-
-
-
 
   <title>Mingozzz的个人博客</title>
   
@@ -133,6 +132,35 @@
 
 
 
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
@@ -149,7 +177,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -159,13 +187,16 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">机器学习，从入门到入土</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -173,35 +204,55 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -209,12 +260,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -227,21 +286,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/3.DOM操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/3.DOM操作/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="左一鸣">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="左一鸣"/>
+      <meta itemprop="description" content="在读码农"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mingozzz的个人博客">
+      <meta itemprop="name" content="Mingozzz的个人博客"/>
     </span>
 
     
@@ -251,11 +312,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/23/3.DOM操作/" itemprop="url">3.DOM操作</a></h1>
+                
+                <a href="/2019/04/23/3.DOM操作/" class="post-title-link" itemprop="url">3.DOM操作</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -263,19 +333,25 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-23T17:36:06+08:00">
-                2019-04-23
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-04-23 17:36:06 / Modified: 17:56:13" itemprop="dateCreated datePublished" datetime="2019-04-23T17:36:06+08:00">2019-04-23</time>
             
 
             
+              
 
+              
             
           </span>
 
           
 
           
+            
             
           
 
@@ -303,28 +379,47 @@
       
         
           
-          1.DOMDOM(Document Object Model)文档对象模型：将HTML文档呈现为带有元素、属性和文本的树结构代码DOM节点层次图
+            <h2 id="1-DOM"><a href="#1-DOM" class="headerlink" title="1.DOM"></a>1.DOM</h2><p>DOM(Document Object Model)文档对象模型：<br>将HTML文档呈现为带有元素、属性和文本的树结构<br><code>代码</code><br><a href="https://i.loli.net/2019/04/23/5cbed41183d0c.jpg" target="_blank" rel="noopener"><img src="https://i.loli.net/2019/04/23/5cbed41183d0c.jpg" alt></a><br><code>DOM节点层次图</code><br><a href="https://i.loli.net/2019/04/23/5cbed445bd5a9.jpg" target="_blank" rel="noopener"><img src="https://i.loli.net/2019/04/23/5cbed445bd5a9.jpg" alt></a></p>
+<ol>
+<li>元素节点:<code>&lt;html&gt;</code> <code>&lt;p&gt;</code>等标签</li>
+<li>属性节点:<code>href=&quot;http://www.imooc.com&quot;。</code></li>
+<li>文本节点:向用户展示的内容<br><a href="https://i.loli.net/2019/04/23/5cbed51a327cd.jpg" target="_blank" rel="noopener"><img src="https://i.loli.net/2019/04/23/5cbed51a327cd.jpg" alt></a></li>
+</ol>
+<hr>
+<h2 id="2-通过ID获取元素"><a href="#2-通过ID获取元素" class="headerlink" title="2.通过ID获取元素"></a>2.通过ID获取元素</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mye=<span class="built_in">document</span>.getElementById(<span class="string">"id"</span>);<span class="comment">//获取元素存储在变量中</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-innerHTML属性"><a href="#3-innerHTML属性" class="headerlink" title="3.innerHTML属性"></a>3.innerHTML属性</h2><p><code>object.innerHTML</code></p>
+<ol>
+<li>object即为2中获取的元素</li>
+<li>innerHTML区分大小写</li>
+</ol>
+<h5 id="用与获取或替换元素中的内容"><a href="#用与获取或替换元素中的内容" class="headerlink" title="用与获取或替换元素中的内容:"></a>用与获取或替换元素中的内容:</h5><p><code>object.innerHTML=&quot;&quot;;//修改元素内的内容</code></p>
+<hr>
+<h2 id="4-改变HTML样式-display属性"><a href="#4-改变HTML样式-display属性" class="headerlink" title="4.改变HTML样式(display属性)"></a>4.改变HTML样式(display属性)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">object.style.color=<span class="string">"red"</span>;</span><br><span class="line">object.style.backgroundColor=<span class="string">"blue"</span>;</span><br></pre></td></tr></table></figure>
+<p>基本属性表:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">backgroundColor:背景颜色</span><br><span class="line">height:元素高度</span><br><span class="line">width:元素宽度</span><br><span class="line">color:文本颜色</span><br><span class="line">font:在一行设置所有字体属性</span><br><span class="line">fontSize:字体大小</span><br><span class="line">fontFamily:字体系列</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="5-显示和隐藏"><a href="#5-显示和隐藏" class="headerlink" title="5.显示和隐藏"></a>5.显示和隐藏</h2><p><code>Object.style.display = value</code><br><code>value:none/block</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hidetext</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">"id"</span>).style.display:<span class="string">"none"</span>;<span class="comment">//隐藏</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shoetext</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">document</span>.getElementById(<span class="string">"id"</span>).style.display:<span class="string">"block"</span>;<span class="comment">//显示</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="6-控制类名-classname属性"><a href="#6-控制类名-classname属性" class="headerlink" title="6.控制类名(classname属性)"></a>6.控制类名(classname属性)</h2><p>获取class属性改变元素的css样式<br><a href="https://i.loli.net/2019/04/23/5cbedc2034079.jpg" target="_blank" rel="noopener"><img src="https://i.loli.net/2019/04/23/5cbedc2034079.jpg" alt></a></p>
 
-元素节点:&lt;html&gt; &lt;p&gt;等标签
-属性节点:href=&quot;http://www.imooc.com&quot;。
-文
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/23/3.DOM操作/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -357,21 +452,23 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/2.常用互动方法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/2.常用互动方法/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="左一鸣">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="左一鸣"/>
+      <meta itemprop="description" content="在读码农"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mingozzz的个人博客">
+      <meta itemprop="name" content="Mingozzz的个人博客"/>
     </span>
 
     
@@ -381,11 +478,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/22/2.常用互动方法/" itemprop="url">2.常用互动方法</a></h1>
+                
+                <a href="/2019/04/22/2.常用互动方法/" class="post-title-link" itemprop="url">2.常用互动方法</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -393,19 +499,37 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T15:18:13+08:00">
-                2019-04-22
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-04-22 15:18:13" itemprop="dateCreated datePublished" datetime="2019-04-22T15:18:13+08:00">2019-04-22</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-23 18:20:18" itemprop="dateModified" datetime="2019-04-23T18:20:18+08:00">2019-04-23</time>
+              
             
           </span>
 
           
 
           
+            
             
           
 
@@ -433,27 +557,50 @@
       
         
           
-          1.输出内容document.write()
-直接输出document.write(&quot;Hello,world!&quot;)//用&quot;&quot;括起
-变量输出var mystr=&quot;Hello,world!&quot;;
-document.write(var);//直接写
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/2.常用互动方法/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="1-输出内容document-write"><a href="#1-输出内容document-write" class="headerlink" title="1.输出内容document.write()"></a>1.输出内容<code>document.write()</code></h2><ol>
+<li>直接输出<br><code>document.write(&quot;Hello,world!&quot;)//用&quot;&quot;括起</code></li>
+<li><p>变量输出<br><code>var mystr=&quot;Hello,world!&quot;;
+document.write(var);//直接写变量名</code></p>
+</li>
+<li><p>多项内容用+连接<br><code>var mystr=&quot;Hello,world!&quot;;
+document.write(var+&quot;good&quot;);//直接写变量名</code></p>
+</li>
+<li><p>输出HTML标签<br><code>document.write(&quot;Hello,&lt;br&gt;world!&quot;)//用&quot;&quot;括起</code></p>
+<p> <code>var mystr=&quot;Hello,world!&quot;;
+document.write(var+&quot;&lt;br&gt;&quot;)</code></p>
+</li>
+</ol>
+<hr>
+<h2 id="2-警告对话框"><a href="#2-警告对话框" class="headerlink" title="2.警告对话框"></a>2.警告对话框</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(变量或字符串)；</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-确认对话框"><a href="#3-确认对话框" class="headerlink" title="3.确认对话框"></a>3.确认对话框</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mymessage=confirm(<span class="string">"你喜欢吗"</span>);<span class="comment">//对话框中显示的文本</span></span><br><span class="line"><span class="keyword">if</span>(mymessage==<span class="literal">true</span>)</span><br><span class="line">    &#123;<span class="built_in">document</span>.write(<span class="string">"很好"</span>);&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	&#123;<span class="built_in">document</span>.write(<span class="string">"也行"</span>);&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="4-提问对话框"><a href="#4-提问对话框" class="headerlink" title="4.提问对话框"></a>4.提问对话框</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mymessage=prompt(<span class="string">"请输入"</span>,<span class="string">"默认内容"</span>);</span><br><span class="line"><span class="keyword">if</span>(mymessage!=<span class="literal">null</span>)</span><br><span class="line">	&#123;alert(<span class="string">"欢迎填写"</span>);&#125;<span class="comment">//警告对话框</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	&#123;alert(<span class="string">"错误"</span>);&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="5-打开新窗口"><a href="#5-打开新窗口" class="headerlink" title="5.打开新窗口"></a>5.打开新窗口</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.open(<span class="string">"URL"</span>,<span class="string">"窗口名称"</span>,<span class="string">"参数字符串"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="5-1可选字符串"><a href="#5-1可选字符串" class="headerlink" title="5.1可选字符串"></a>5.1可选字符串</h3><p><code>_balnk</code>打开新窗口<br><code>_self</code>在当前窗口显示目标网页<br><code>top</code>框架网页中在上部窗口中显示目标网页</p>
+<h3 id="5-2参数字符串，用-隔开"><a href="#5-2参数字符串，用-隔开" class="headerlink" title="5.2参数字符串，用,隔开"></a>5.2参数字符串，用<code>,</code>隔开</h3><p><a href="https://i.loli.net/2019/04/22/5cbd711d24f7d.jpg" target="_blank" rel="noopener"><img src="https://i.loli.net/2019/04/22/5cbd711d24f7d.jpg" alt></a></p>
+<hr>
+<h2 id="6-关闭窗口"><a href="#6-关闭窗口" class="headerlink" title="6.关闭窗口"></a>6.关闭窗口</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.close()<span class="comment">//关闭本窗口</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mywin=<span class="built_in">window</span>.open(<span class="string">"www.baidu.com"</span>);</span><br><span class="line">mywin.close();<span class="comment">//关闭指定窗口</span></span><br></pre></td></tr></table></figure>
+<hr>
+
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -486,21 +633,23 @@ document.write(var);//直接写
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/1.Javascript基本知识/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/21/1.Javascript基本知识/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="左一鸣">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="左一鸣"/>
+      <meta itemprop="description" content="在读码农"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mingozzz的个人博客">
+      <meta itemprop="name" content="Mingozzz的个人博客"/>
     </span>
 
     
@@ -510,11 +659,20 @@ document.write(var);//直接写
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/21/1.Javascript基本知识/" itemprop="url">1.Javascript基本知识</a></h1>
+                
+                <a href="/2019/04/21/1.Javascript基本知识/" class="post-title-link" itemprop="url">1.Javascript基本知识</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -522,19 +680,37 @@ document.write(var);//直接写
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-21T11:15:13+08:00">
-                2019-04-21
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-04-21 11:15:13" itemprop="dateCreated datePublished" datetime="2019-04-21T11:15:13+08:00">2019-04-21</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-23 17:54:12" itemprop="dateModified" datetime="2019-04-23T17:54:12+08:00">2019-04-23</time>
+              
             
           </span>
 
           
 
           
+            
             
           
 
@@ -562,26 +738,46 @@ document.write(var);//直接写
       
         
           
-          1.&lt;script&gt;标签123&lt;script type="text/javascript"&gt;...&lt;/scripy&gt;
+            <h2 id="1-lt-script-gt-标签"><a href="#1-lt-script-gt-标签" class="headerlink" title="1.&lt;script&gt;标签"></a>1.<code>&lt;script&gt;</code>标签</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">...</span><br><span class="line">&lt;<span class="regexp">/scripy&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-引用JS外部文件"><a href="#2-引用JS外部文件" class="headerlink" title="2.引用JS外部文件"></a>2.引用JS外部文件</h2><h3 id="2-1在HTML中插入JS代码"><a href="#2-1在HTML中插入JS代码" class="headerlink" title="2.1在HTML中插入JS代码"></a>2.1在HTML中插入JS代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">		...</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2外部引用"><a href="#2-2外部引用" class="headerlink" title="2.2外部引用"></a>2.2外部引用</h3><h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"script.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="script-js"><a href="#script-js" class="headerlink" title="script.js"></a>script.js</h4><p>不需写<code>&lt;script&gt;</code>标签，直接写JS代码</p>
+<hr>
+<h2 id="3-JS在页中的位置"><a href="#3-JS在页中的位置" class="headerlink" title="3.JS在页中的位置"></a>3.JS在页中的位置</h2><p>可以放在html页面的任何位置，一般放在<head><meta name="generator" content="Hexo 3.8.0">部分</head></p>
+<hr>
+<h2 id="4-语句"><a href="#4-语句" class="headerlink" title="4.语句"></a>4.语句</h2><p>;代表语句结束<br>    按顺序执行语句</p>
+<hr>
+<h2 id="5-注释"><a href="#5-注释" class="headerlink" title="5.注释"></a>5.注释</h2><p><code>//单行注释</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/*多行注释</span><br><span class="line">   多行注释*/</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="6-变量"><a href="#6-变量" class="headerlink" title="6.变量"></a>6.变量</h2><h3 id="6-1先声明在赋值"><a href="#6-1先声明在赋值" class="headerlink" title="6.1先声明在赋值"></a>6.1先声明在赋值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var mychar;</span><br><span class="line">mychar=&quot;javascript&quot;;</span><br><span class="line">var mynum = 6;</span><br></pre></td></tr></table></figure>
+<h3 id="6-2重复赋值"><a href="#6-2重复赋值" class="headerlink" title="6.2重复赋值"></a>6.2重复赋值</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var mychar;</span><br><span class="line">mychar="javascript";</span><br><span class="line">mychar="hello";</span><br></pre></td></tr></table></figure>
+<p>1.变量以字母<code>、$、_</code>开头<br>2.变量由字母、数字、$、_组成<br>3.不能使用JS关键字和保留字<br>4.变量名区分大小写</p>
+<hr>
+<h2 id="7-判断语句"><a href="#7-判断语句" class="headerlink" title="7.判断语句"></a>7.判断语句</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">if</span>(条件)</span></span><br><span class="line"><span class="undefined">          &#123;成立代码&#125;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">else</span></span></span><br><span class="line"><span class="undefined">          &#123;不成立代码&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="8-函数"><a href="#8-函数" class="headerlink" title="8.函数"></a>8.函数</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function 函数名（）</span><br><span class="line">&#123;</span><br><span class="line">    函数代码；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>引用函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;form&gt;</span><br><span class="line">      &lt;input type=&quot;button&quot;  value=&quot;点击我&quot; onclick=&quot;contxt()&quot; /&gt;  //value:按钮显示的值 onclick：引用的函数</span><br><span class="line">   &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<hr>
 
-2.引用JS外部文件2.1在HTML中插入JS代码123456789&lt;html&gt;	&lt;head&gt;	&lt;script t
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/21/1.Javascript基本知识/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -614,9 +810,6 @@ document.write(var);//直接写
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -630,54 +823,57 @@ document.write(var);//直接写
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">左一鸣</p>
-              <p class="site-description motion-element" itemprop="description">在读码农</p>
+              <div class="site-description motion-element" itemprop="description">在读码农</div>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
+          
+            <nav class="site-state motion-element">
               
-                <a href="/archives/">
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
             
-
-            
-
-            
-
-          </nav>
-
           
-
-          
-
-          
-          
-
-          
-          
-
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -685,6 +881,7 @@ document.write(var);//直接写
 
     </div>
   </aside>
+  
 
 
         
@@ -694,16 +891,18 @@ document.write(var);//直接写
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">左一鸣</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -711,12 +910,13 @@ document.write(var);//直接写
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
 
         
+
 
 
 
@@ -737,11 +937,14 @@ document.write(var);//直接写
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -755,99 +958,11 @@ document.write(var);//直接写
 
 
 
-  
 
 
 
 
 
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -861,7 +976,51 @@ document.write(var);//直接写
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
 
 
 
@@ -873,6 +1032,19 @@ document.write(var);//直接写
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
   
 
   
