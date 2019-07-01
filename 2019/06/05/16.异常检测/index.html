@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="16.异常检测">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/16.异常检测/index.html">
+<meta property="og:site_name" content="Mingozzz&#39; blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603043372002.jpg">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/93d6dfe7e5cb8a46923c178171889747.png">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/fe4472adbf6ddd9d9b51d698cc750b68.png">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/65afdea865d50cba12d4f7674d599de5.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/05/5cf706ee0d8a978654.png">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/fcb35433507a56631dde2b4e543743ee.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/05/5cf708ea3747045222.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/05/5cf70915af19395532.png">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/ba47767a11ba39a23898b9f1a5a57cc5.png">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/82b90f56570c05966da116c3afe6fc91.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/06/05/5cf70a3f007a111703.png">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/0990d6b7a5ab3c0036f42083fe2718c6.jpg">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/f406bc738e5e032be79e52b6facfa48e.png">
+<meta property="og:updated_time" content="2019-06-12T02:01:16.574Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="16.异常检测">
+<meta name="twitter:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603043372002.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/05/16.异常检测/">
+
+
+
+
+
+  <title>16.异常检测 | Mingozzz' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mingozzz' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/16.异常检测/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左一鸣">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingozzz' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">16.异常检测</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-05T09:25:42+08:00">
+                2019-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603043372002.jpg" alt></p>
+<a id="more"></a>
+<h1 id="16-异常检测"><a href="#16-异常检测" class="headerlink" title="16.异常检测"></a>16.异常检测</h1><h2 id="16-1问题的动机"><a href="#16-1问题的动机" class="headerlink" title="16.1问题的动机"></a>16.1问题的动机</h2><p>假想你是一个飞机引擎制造商，当你生产的飞机引擎从生产线上流出时，你需要进行QA(质量控制测试)，而作为这个测试的一部分，你测量了飞机引擎的一些特征变量，比如引擎运转时产生的热量，或者引擎的振动等等<br><img src="http://www.ai-start.com/ml2014/images/93d6dfe7e5cb8a46923c178171889747.png" alt><br>从x1到xm，如果你生产了个引擎的话，你将这些数据绘制成图表，看起来就是这个样子：<br><img src="http://www.ai-start.com/ml2014/images/fe4472adbf6ddd9d9b51d698cc750b68.png" alt><br>这里的每个点、每个叉，都是你的无标签数据。这样，异常检测问题可以定义如下：我们假设后来有一天，你有一个新的飞机引擎从生产线上流出，而你的新飞机引擎有特征变量xtest。所谓的异常检测问题就是：我们希望知道这个新的飞机引擎是否有某种异常，或者说，我们希望判断这个引擎是否需要进一步测试。因为，如果它看起来像一个正常的引擎，那么我们可以直接将它运送到客户那里，而不需要进一步的测试。</p>
+<p>给定数据集x1,x2…xm，我们假使数据集是正常的，我们希望知道新的数据xtest是不是异常的，即这个测试数据不属于该组数据的几率如何。我们所构建的模型应该能根据该测试数据的位置告诉我们其属于一组数据的可能性p(x)。<br><img src="http://www.ai-start.com/ml2014/images/65afdea865d50cba12d4f7674d599de5.png" alt><br>上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。这种方法称为密度估计，表达如下：<br><img src="https://i.loli.net/2019/06/05/5cf706ee0d8a978654.png" alt></p>
+<h3 id="欺诈检测："><a href="#欺诈检测：" class="headerlink" title="欺诈检测："></a>欺诈检测：</h3><p>x(i)=用户的第i个活动特征</p>
+<p>模型p(x)为我们其属于一组数据的可能性，通过p(x)&lt;ε检测非正常用户。</p>
+<p>   异常检测主要用来识别欺骗。例如在线采集而来的有关用户的数据，一个特征向量中可能会包含如：用户多久登录一次，访问过的页面，在论坛发布的帖子数量，甚至是打字速度等。尝试根据这些特征构建一个模型，可以用这个模型来识别那些不符合该模式的用户。</p>
+<hr>
+<h2 id="16-2-高斯分布"><a href="#16-2-高斯分布" class="headerlink" title="16.2 高斯分布"></a>16.2 高斯分布</h2><p>高斯分布样例：<br><img src="http://www.ai-start.com/ml2014/images/fcb35433507a56631dde2b4e543743ee.png" alt></p>
+<hr>
+<h2 id="16-3-算法"><a href="#16-3-算法" class="headerlink" title="16.3 算法"></a>16.3 算法</h2><h3 id="异常检测算法："><a href="#异常检测算法：" class="headerlink" title="异常检测算法："></a>异常检测算法：</h3><p>对于给定的数据集 ，我们要针对每一个特征计算μ和σ2的估计值。<br><img src="https://i.loli.net/2019/06/05/5cf708ea3747045222.png" alt><br>一旦我们获得了平均值和方差的估计值，给定新的一个训练实例，根据模型计算p(x)：<br><img src="https://i.loli.net/2019/06/05/5cf70915af19395532.png" alt><br>当p(X)&lt;ε时，为异常。<br>下图是一个由两个特征的训练集，以及特征的分布情况：<br><img src="http://www.ai-start.com/ml2014/images/ba47767a11ba39a23898b9f1a5a57cc5.png" alt><br>下面的三维图表表示的是密度估计函数，z轴为根据两个特征的值所估计p(x)值：<br><img src="http://www.ai-start.com/ml2014/images/82b90f56570c05966da116c3afe6fc91.jpg" alt><br>我们选择一个ε，将p(X)=ε作为我们的判定边界，当p(X)&gt;ε时预测数据为正常数据，否则为异常。</p>
+<hr>
+<h2 id="16-4-开发和评价一个异常检测系统"><a href="#16-4-开发和评价一个异常检测系统" class="headerlink" title="16.4 开发和评价一个异常检测系统"></a>16.4 开发和评价一个异常检测系统</h2><p>异常检测算法是一个非监督学习算法，意味着我们无法根据结果变量y  的值来告诉我们数据是否真的是异常的。我们需要另一种方法来帮助检验算法是否有效。当我们开发一个异常检测系统时，我们从带标记（异常或正常）的数据着手，我们从其中选择一部分正常数据用于构建训练集，然后用剩下的正常数据和异常数据混合的数据构成交叉检验集和测试集。</p>
+<p>例如：我们有10000台正常引擎的数据，有20台异常引擎的数据。 我们这样分配数据：<br>6000台正常引擎的数据作为训练集<br>2000台正常引擎和10台异常引擎的数据作为交叉检验集<br>2000台正常引擎和10台异常引擎的数据作为测试集</p>
+<p>具体的评价方法如下：<br>1.根据测试集数据，我们估计特征的平均值和方差并构建p(x)函数<br>2.对交叉检验集，我们尝试使用不同的ε值作为阀值，并预测数据是否异常，根据F1值或者查准率与查全率的比例来选择ε<br>3.选出ε后，针对测试集进行预测，计算异常检验系统的F1值，或者查准率与查全率之比</p>
+<hr>
+<h2 id="16-5-异常检测与监督学习对比"><a href="#16-5-异常检测与监督学习对比" class="headerlink" title="16.5 异常检测与监督学习对比"></a>16.5 异常检测与监督学习对比</h2><p><img src="https://i.loli.net/2019/06/05/5cf70a3f007a111703.png" alt></p>
+<hr>
+<h2 id="16-6-选择特征"><a href="#16-6-选择特征" class="headerlink" title="16.6 选择特征"></a>16.6 选择特征</h2><h3 id="如何选择特征："><a href="#如何选择特征：" class="headerlink" title="如何选择特征："></a>如何选择特征：</h3><p>异常检测假设特征符合高斯分布，如果数据的分布不是高斯分布，异常检测算法也能够工作，但是最好还是将数据转换成高斯分布，例如使用对数函数：x=log(x+c)，其中c为非负常数；<br><img src="http://www.ai-start.com/ml2014/images/0990d6b7a5ab3c0036f42083fe2718c6.jpg" alt></p>
+<h3 id="误差分析："><a href="#误差分析：" class="headerlink" title="误差分析："></a>误差分析：</h3><p>一个常见的问题是一些异常的数据可能也会有较高的p(x)值，因而被算法认为是正常的。这种情况下误差分析能够帮助我们，我们可以分析那些被算法错误预测为正常的数据，观察能否找出一些问题。我们可能能从问题中发现我们需要增加一些新的特征，增加这些新特征后获得的新算法能够帮助我们更好地进行异常检测。</p>
+<h3 id="异常检测误差分析："><a href="#异常检测误差分析：" class="headerlink" title="异常检测误差分析："></a>异常检测误差分析：</h3><p><img src="http://www.ai-start.com/ml2014/images/f406bc738e5e032be79e52b6facfa48e.png" alt><br>我们通常可以通过将一些相关的特征进行组合，来获得一些新的更好的特征（异常数据的该特征值异常地大或小），例如，在检测数据中心的计算机状况的例子中，我们可以用CPU负载与网络通信量的比例作为一个新的特征，如果该值异常地大，便有可能意味着该服务器是陷入了一些问题中。</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/29/15.降维/" rel="next" title="15.降维">
+                <i class="fa fa-chevron-left"></i> 15.降维
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/09/17.推荐系统/" rel="prev" title="17.推荐系统">
+                17.推荐系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">左一鸣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#16-异常检测"><span class="nav-number">1.</span> <span class="nav-text">16.异常检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#16-1问题的动机"><span class="nav-number">1.1.</span> <span class="nav-text">16.1问题的动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#欺诈检测："><span class="nav-number">1.1.1.</span> <span class="nav-text">欺诈检测：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-2-高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">16.2 高斯分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-3-算法"><span class="nav-number">1.3.</span> <span class="nav-text">16.3 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异常检测算法："><span class="nav-number">1.3.1.</span> <span class="nav-text">异常检测算法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-4-开发和评价一个异常检测系统"><span class="nav-number">1.4.</span> <span class="nav-text">16.4 开发和评价一个异常检测系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-5-异常检测与监督学习对比"><span class="nav-number">1.5.</span> <span class="nav-text">16.5 异常检测与监督学习对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-6-选择特征"><span class="nav-number">1.6.</span> <span class="nav-text">16.6 选择特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何选择特征："><span class="nav-number">1.6.1.</span> <span class="nav-text">如何选择特征：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差分析："><span class="nav-number">1.6.2.</span> <span class="nav-text">误差分析：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常检测误差分析："><span class="nav-number">1.6.3.</span> <span class="nav-text">异常检测误差分析：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左一鸣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://mingo.pro">zym的MacBook pro</a> 强力驱动</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

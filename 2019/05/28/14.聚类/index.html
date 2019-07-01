@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="14.聚类">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/14.聚类/index.html">
+<meta property="og:site_name" content="Mingozzz&#39; blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559360963177&di=7cb4c75ffb56072c20c4e38b7a526444&imgtype=0&src=http%3A%2F%2Fjbcdn2.b0.upaiyun.com%2F2014%2F07%2F38026ed22fc1a91d92b5d2ef93540f20.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede05dd9cc873405.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede1c0dfd1a77633.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede352ebd9065984.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede392b781a93474.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede3bc724d390221.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede49eeff7071706.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede5186bf3326923.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede6f8388fa70007.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/29/5cede7c890b1c23468.png">
+<meta property="og:updated_time" content="2019-06-01T01:02:19.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="14.聚类">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559360963177&di=7cb4c75ffb56072c20c4e38b7a526444&imgtype=0&src=http%3A%2F%2Fjbcdn2.b0.upaiyun.com%2F2014%2F07%2F38026ed22fc1a91d92b5d2ef93540f20.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/28/14.聚类/">
+
+
+
+
+
+  <title>14.聚类 | Mingozzz' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mingozzz' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/14.聚类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左一鸣">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingozzz' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">14.聚类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-28T17:05:33+08:00">
+                2019-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1559360963177&amp;di=7cb4c75ffb56072c20c4e38b7a526444&amp;imgtype=0&amp;src=http%3A%2F%2Fjbcdn2.b0.upaiyun.com%2F2014%2F07%2F38026ed22fc1a91d92b5d2ef93540f20.png" alt><br><a id="more"></a></p>
+<h1 id="14-聚类"><a href="#14-聚类" class="headerlink" title="14.聚类"></a>14.聚类</h1><h2 id="14-1-无监督学习"><a href="#14-1-无监督学习" class="headerlink" title="14.1 无监督学习"></a>14.1 无监督学习</h2><h3 id="非监督学习与监督学习的比较"><a href="#非监督学习与监督学习的比较" class="headerlink" title="非监督学习与监督学习的比较"></a>非监督学习与监督学习的比较</h3><p><code>监督学习的目标</code>：用有标签的训练集拟合一个假设函数，找到能够区分正样本和负样本的决策边界<br><code>非监督学习算法</code>：让计算机学习无标签数据<br><img src="https://i.loli.net/2019/05/29/5cede05dd9cc873405.png" alt><em>非监督学习中的数据没有附带任何标签</em><br>上图中一系列的点都没有标签信息</p>
+<p>在非监督学习中，我们需要将一系列无标签的训练数据，输入到一个算法中，利用这个算法为我们找这个数据的内在结构。上图的数据看起来可以分成两个分开的点集（簇），一个能够找到圈出的这些点集的算法，就被称为聚类算法。</p>
+<h3 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h3><p><code>聚类算法：</code>用来寻找一系列无标签训练数据的内在结构的算法（找出簇）<br><code>聚类算法的应用：</code><br><img src="https://i.loli.net/2019/05/29/5cede1c0dfd1a77633.png" alt><br>市场分割：利用数据库中存储的客户的信息，将他们分成不同的客户群，对不同类型的客户分别销售产品或者分别提供更适合的服务。<br>星系的形成</p>
+<hr>
+<h2 id="14-2-K-均值算法"><a href="#14-2-K-均值算法" class="headerlink" title="14.2 K-均值算法"></a>14.2 K-均值算法</h2><p><code>k-均值算法</code>（聚类算法）是最普及的聚类算法，算法接受一个未标记的数据集，然后将数据聚类成不同的组<br><code>k-均值算法</code>是一个迭代算法<br>假设我们想要将数据聚类成n个组，其方法为:<br>首先选择K个随机的点，也称为<code>聚类中心</code><br>对于数据集中的每一个数据，将其与距离最近的中心点关联起来，与同一个中心点关联的所有点聚成一类。<br>计算每一个组的平均值，将该组所关联的中心点移动到平均值的位置。<br>重复直至中心点不再变化</p>
+<p>###聚类实例<br><img src="https://i.loli.net/2019/05/29/5cede352ebd9065984.png" alt><br>迭代一次<br><img src="https://i.loli.net/2019/05/29/5cede392b781a93474.png" alt><br>迭代3次<br><img src="https://i.loli.net/2019/05/29/5cede3bc724d390221.png" alt><br>迭代10次</p>
+<p>μ表示聚类中心，c存储与第i个实例数据最近的聚类中心的索引，则K-均值算法的伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Repeat &#123;</span><br><span class="line">for i = 1 to m</span><br><span class="line">c(i) := index (form 1 to K) of cluster centroid closest to x(i)</span><br><span class="line">for k = 1 to K</span><br><span class="line">μk := average (mean) of points assigned to cluster k</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一个for循环是赋值步骤，即：对于每一个样例，计算其应该属于的类。<br>第二个for循环是聚类中心的移动，即：对于每一个类，重新计算该类的质心。</p>
+<p><img src="https://i.loli.net/2019/05/29/5cede49eeff7071706.png" alt><br>应用：通过包含身高和体重两类特征的数据集来确定生产T恤的尺寸</p>
+<hr>
+<h3 id="14-3优化目标"><a href="#14-3优化目标" class="headerlink" title="14.3优化目标"></a>14.3优化目标</h3><p><code>K-均值最小化问题</code>，是要最小化所有的数据点与其所关联的聚类中心点之间的距离之和<br>K-均值的<code>代价函数</code>（畸变函数）为:<img src="https://i.loli.net/2019/05/29/5cede5186bf3326923.png" alt><br>μ表示与xi最近的聚类中心点<br>优化目标便是找出使得代价函数最小的c(1) c(2)…和μ1 μ2…</p>
+<p>在K-均值算法中，第一个循环是用于减小c(i)引起的代价，而第二个循环则是用于减小μi引起的代价。<br>迭代的过程一定会是每一次迭代都在减小代价函数，不然便是出现了错误。</p>
+<hr>
+<h2 id="14-4-随机初始化"><a href="#14-4-随机初始化" class="headerlink" title="14.4 随机初始化"></a>14.4 随机初始化</h2><p>在运行K-均值算法的之前，我们首先要<code>随机初始化所有的聚类中心点</code></p>
+<p>###具体做法<br>1.选择K&lt;m，即聚类中心点的个数要小于所有训练集实例的数量<br>2.随机选择K个训练实例，然后令K个聚类中心分别与这K个训练实例相等</p>
+<p><img src="https://i.loli.net/2019/05/29/5cede6f8388fa70007.png" alt><br>K-均值有可能会停留在一个局部最小值处，取决于初始化的情况。<br>解决这个问题需要多次运行K-均值算法，每一次都重新进行随机初始化，最后再比较多次运行K-均值的结果，选择代价函数最小的结果。这种方法在较小的时候还是可行的，但是如果较大，这么做也可能不会有明显地改善。</p>
+<hr>
+<p>##14.5 选择聚类数量 </p>
+<p>###肘部法则<br>改变K值（聚类类别数目的总数），用一个聚类来运行K均值聚类方法<br>所有的数据都会分到一个聚类里，然后计算成本函数或者计算畸变函数J。K代表聚类数字。<br><img src="https://i.loli.net/2019/05/29/5cede7c890b1c23468.png" alt><br>如图，畸变值会迅速下降，从1到2，从2到3之后，在3的时候达到一个肘点。在此之后，畸变值就下降的非常慢，因此使用3个聚类来进行聚类是正确的，这个点是曲线的肘点</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/27/hexo之next主题添加分类/" rel="next" title="hexo之next主题添加分类">
+                <i class="fa fa-chevron-left"></i> hexo之next主题添加分类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/29/15.降维/" rel="prev" title="15.降维">
+                15.降维 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">左一鸣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#14-聚类"><span class="nav-number">1.</span> <span class="nav-text">14.聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#14-1-无监督学习"><span class="nav-number">1.1.</span> <span class="nav-text">14.1 无监督学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非监督学习与监督学习的比较"><span class="nav-number">1.1.1.</span> <span class="nav-text">非监督学习与监督学习的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚类算法"><span class="nav-number">1.1.2.</span> <span class="nav-text">聚类算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-2-K-均值算法"><span class="nav-number">1.2.</span> <span class="nav-text">14.2 K-均值算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-3优化目标"><span class="nav-number">1.2.1.</span> <span class="nav-text">14.3优化目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-4-随机初始化"><span class="nav-number">1.3.</span> <span class="nav-text">14.4 随机初始化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左一鸣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://mingo.pro">zym的MacBook pro</a> 强力驱动</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

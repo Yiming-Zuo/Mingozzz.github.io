@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="17.推荐系统">
+<meta property="og:url" content="http://yoursite.com/2019/06/09/17.推荐系统/index.html">
+<meta property="og:site_name" content="Mingozzz&#39; blog">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603045139386.jpg">
+<meta property="og:image" content="http://www.ai-start.com/ml2014/images/c2822f2c28b343d7e6ade5bd40f3a1fc.png">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603013843094.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603015988302.png">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603018493219.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603019431815.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603019573916.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603020008921.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603020383015.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603020566639.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603022086018.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603022966179.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603024798840.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603024872674.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603025026378.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603025207952.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603026810582.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603027060513.jpg">
+<meta property="og:updated_time" content="2019-06-12T01:55:39.057Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="17.推荐系统">
+<meta name="twitter:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603045139386.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/09/17.推荐系统/">
+
+
+
+
+
+  <title>17.推荐系统 | Mingozzz' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mingozzz' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/17.推荐系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左一鸣">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingozzz' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">17.推荐系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-09T16:53:23+08:00">
+                2019-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603045139386.jpg" alt><br><a id="more"></a></p>
+<h1 id="17-推荐系统"><a href="#17-推荐系统" class="headerlink" title="17.推荐系统"></a>17.推荐系统</h1><h2 id="17-1-问题规划"><a href="#17-1-问题规划" class="headerlink" title="17.1 问题规划"></a>17.1 问题规划</h2><p>举例：（定义推荐系统）<br> 假使我们是一个电影供应商，我们有 5 部电影和 4 个用户，我们要求用户为电影打分。<br><img src="http://www.ai-start.com/ml2014/images/c2822f2c28b343d7e6ade5bd40f3a1fc.png" alt><br>前三部电影是爱情片，后两部则是动作片，我们可以看出Alice和Bob似乎更倾向与爱情片， 而 Carol 和 Dave 似乎更倾向与动作片。并且没有一个用户给所有的电影都打过分。我们希望构建一个算法来预测他们每个人可能会给他们没看过的电影打多少分，并以此作为推荐的依据。</p>
+<p>标记：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603013843094.jpg" alt></p>
+<hr>
+<h2 id="17-2-基于内容的推荐算法"><a href="#17-2-基于内容的推荐算法" class="headerlink" title="17.2 基于内容的推荐算法"></a>17.2 基于内容的推荐算法</h2><p>在一个基于内容的推荐系统算法中，我们假设对于我们希望推荐的东西有一些数据，这些数据是有关这些东西的特征。<br>在我们的例子中，我们可以假设每部电影都有两个特征，如x<sub>1</sub>代表电影的浪漫程度，x<sub>2</sub>代表电影的动作程度。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603015988302.png" alt><br>则每部电影都有一个特征向量，如x<sup>(1)</sup>是第一部电影的特征向量为[0.9 0]。</p>
+<p>下面我们要基于这些特征来构建一个推荐系统算法。 假设我们采用线性回归模型，我们可以针对每一个用户都训练一个线性回归模型，如θ<sup>(1)</sup>是第一个用户的模型的参数。 于是，我们有：<br>θ<sup>(j)</sup>:用户j的参数向量<br>x<sup>(i)</sup>:电影i的特征向量<br>对于用户j和电影i，我们预测评分为：(θ<sup>(j)</sup>)<sup>(T)</sup>x<sup>(i)</sup></p>
+<p>代价函数<br>针对用户j，该线性回归模型的代价为预测误差的平方和，加上正则化项：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603018493219.jpg" alt><br>其中i:r(i,j)表示我们只计算那些用户j评过分的电影。在一般的线性回归模型中，误差项和正则项应该都是乘以1/2m，在这里我们将m去掉。并且我们不对方差项θ<sub>(0)</sub>进行正则化处理。</p>
+<p>上面的代价函数只是针对一个用户的，为了学习所有用户，我们将所有用户的代价函数求和：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603019431815.jpg" alt></p>
+<p>如果我们要用梯度下降法来求解最优解，我们计算代价函数的偏导数后得到梯度下降的更新公式为：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603019573916.jpg" alt></p>
+<hr>
+<h2 id="17-3-协同过滤"><a href="#17-3-协同过滤" class="headerlink" title="17.3 协同过滤"></a>17.3 协同过滤</h2><p>在之前的基于内容的推荐系统中，对于每一部电影，我们都掌握了可用的特征，使用这些特征训练出了每一个用户的参数。相反地，如果我们拥有用户的参数，我们可以学习得出电影的特征。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603020008921.jpg" alt><br>但是如果我们既没有用户的参数，也没有电影的特征，这两种方法都不可行了。协同过滤算法可以同时学习这两者。<br>我们的优化目标便改为同时针对x和θ进行。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603020383015.jpg" alt><br>对代价函数求偏导数的结果如下：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603020566639.jpg" alt><br>通过这个学习过程获得的特征矩阵包含了有关电影的重要数据，这些数据不总是人能读懂的，但是我们可以用这些数据作为给用户推荐电影的依据。</p>
+<hr>
+<h2 id="17-4-协同过滤算法"><a href="#17-4-协同过滤算法" class="headerlink" title="17.4 协同过滤算法"></a>17.4 协同过滤算法</h2><p>协同过滤优化目标：<br>给定x<sup>(1)</sup>,…,x<sup>(n<sub>m</sub>)</sup>，估计θ<sup>(1)</sup>,…,θ<sup>(n<sub>m</sub>)</sup>：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603022086018.jpg" alt></p>
+<p>给定θ<sup>(1)</sup>,…,θ<sup>(n<sub>m</sub>)</sup>，估计x<sup>(1)</sup>,…,x<sup>(n<sub>m</sub>)</sup>：<br>同时最小化x<sup>(1)</sup>,…,x<sup>(n<sub>m</sub>)</sup>和θ<sup>(1)</sup>,…,θ<sup>(n<sub>m</sub>)</sup>：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603022966179.jpg" alt></p>
+<hr>
+<h2 id="17-5-矢量化：抵轶矩阵分解"><a href="#17-5-矢量化：抵轶矩阵分解" class="headerlink" title="17.5 矢量化：抵轶矩阵分解"></a>17.5 矢量化：抵轶矩阵分解</h2><p>举例：<br>1.当给出一件产品时，你能否找到与之相关的其它产品。<br>2.一位用户最近看上一件产品，有没有其它相关的产品，你可以推荐给他。<br>我将要做的是：实现一种选择的方法，写出协同过滤算法的预测情况。<br>我们有关于五部电影的数据集，我将要做的是，将这些用户的电影评分，进行分组并存到一个矩阵中。<br>我们有五部电影，以及四位用户，那么这个矩阵Y就是一个5行4列的矩阵，它将这些电影的用户评分数据都存在矩阵里：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603024798840.jpg" alt><br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603024872674.jpg" alt><br>推出评分：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603025026378.jpg" alt><br>找到相关影片：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603025207952.jpg" alt><br>现在既然你已经对特征参数向量进行了学习，那么我们就会有一个很方便的方法来度量两部电影之间的相似性。例如说：电影i有一个特征向量x<sup>(i)</sup>，你是否能找到一部不同的电影j，保证两部电影的特征向量之间的距离x<sup>(i)</sup>和x<sup>(j)</sup>很小，那就能很有力地表明电影i和电影j在某种程度上有相似，至少在某种意义上，某些人喜欢电影i，或许更有可能也对电影j感兴趣。总结一下，当用户在看某部电影i的时候，如果你想找5部与电影非常相似的电影，为了能给用户推荐5部新电影，你需要做的是找出电影j，在这些不同的电影中与我们要找的电影i的距离最小，这样你就能给你的用户推荐几部不同的电影了。</p>
+<hr>
+<h2 id="17-6-实施细节：均值规范化"><a href="#17-6-实施细节：均值规范化" class="headerlink" title="17.6 实施细节：均值规范化"></a>17.6 实施细节：均值规范化</h2><p>用户评分数据：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603026810582.jpg" alt><br>如果我们新增一个用户 Eve，并且 Eve 没有为任何电影评分，那么我们以什么为依据为Eve推荐电影呢？</p>
+<p>我们首先需要对结果Y矩阵进行均值归一化处理，将每一个用户对某一部电影的评分减去所有用户对该电影评分的平均值：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603027060513.jpg" alt><br>然后我们利用这个新的Y矩阵来训练算法。 如果我们要用新训练出的算法来预测评分，则需要将平均值重新加回去，预测(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup>+μ<sub>i</sub>，对于Eve，我们的新模型会认为她给每部电影的评分都是该电影的平均分。</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/05/16.异常检测/" rel="next" title="16.异常检测">
+                <i class="fa fa-chevron-left"></i> 16.异常检测
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/11/18.大规模机器学习/" rel="prev" title="18.大规模机器学习">
+                18.大规模机器学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">左一鸣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#17-推荐系统"><span class="nav-number">1.</span> <span class="nav-text">17.推荐系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#17-1-问题规划"><span class="nav-number">1.1.</span> <span class="nav-text">17.1 问题规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-2-基于内容的推荐算法"><span class="nav-number">1.2.</span> <span class="nav-text">17.2 基于内容的推荐算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-3-协同过滤"><span class="nav-number">1.3.</span> <span class="nav-text">17.3 协同过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-4-协同过滤算法"><span class="nav-number">1.4.</span> <span class="nav-text">17.4 协同过滤算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-5-矢量化：抵轶矩阵分解"><span class="nav-number">1.5.</span> <span class="nav-text">17.5 矢量化：抵轶矩阵分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-6-实施细节：均值规范化"><span class="nav-number">1.6.</span> <span class="nav-text">17.6 实施细节：均值规范化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左一鸣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://mingo.pro">zym的MacBook pro</a> 强力驱动</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
