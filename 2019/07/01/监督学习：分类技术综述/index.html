@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="摘要&amp;#160; &amp;#160; &amp;#160; &amp;#160;监督学习是对一类算法的研究，这类算法从表面实例推断出一般性的假说，得出的假说又可以进一步用来预测未发生的实例。换句话说，监督学习的目标，就是根据预测特征，为分类标签的概率分布建立简洁的模型。得到的分类器会被用于为测试实例贴上分类标签，其中，测试实例的分类特征是已知的，但其分类标签是未知的。本文讨论各种有监督机器学习分类技术。当然，单独一篇文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Supervised Machine Learning: A Review of Classification Techniques（编辑中）">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/监督学习：分类技术综述/index.html">
+<meta property="og:site_name" content="Mingozzz&#39; blog">
+<meta property="og:description" content="摘要&amp;#160; &amp;#160; &amp;#160; &amp;#160;监督学习是对一类算法的研究，这类算法从表面实例推断出一般性的假说，得出的假说又可以进一步用来预测未发生的实例。换句话说，监督学习的目标，就是根据预测特征，为分类标签的概率分布建立简洁的模型。得到的分类器会被用于为测试实例贴上分类标签，其中，测试实例的分类特征是已知的，但其分类标签是未知的。本文讨论各种有监督机器学习分类技术。当然，单独一篇文">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-29-15617719545361.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-07-01-15619668479525.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-07-03-15621461438509.jpg">
+<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-07-04-15622173186326.jpg">
+<meta property="og:updated_time" content="2019-07-18T02:43:34.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Supervised Machine Learning: A Review of Classification Techniques（编辑中）">
+<meta name="twitter:description" content="摘要&amp;#160; &amp;#160; &amp;#160; &amp;#160;监督学习是对一类算法的研究，这类算法从表面实例推断出一般性的假说，得出的假说又可以进一步用来预测未发生的实例。换句话说，监督学习的目标，就是根据预测特征，为分类标签的概率分布建立简洁的模型。得到的分类器会被用于为测试实例贴上分类标签，其中，测试实例的分类特征是已知的，但其分类标签是未知的。本文讨论各种有监督机器学习分类技术。当然，单独一篇文">
+<meta name="twitter:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-29-15617719545361.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/监督学习：分类技术综述/">
+
+
+
+
+
+  <title>Supervised Machine Learning: A Review of Classification Techniques（编辑中） | Mingozzz' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mingozzz' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/监督学习：分类技术综述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左一鸣">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingozzz' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Supervised Machine Learning: A Review of Classification Techniques（编辑中）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T16:15:31+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>&#160; &#160; &#160; &#160;监督学习是对一类算法的研究，这类算法从表面实例推断出一般性的假说，得出的假说又可以进一步用来预测未发生的实例。换句话说，监督学习的目标，就是根据预测特征，为分类标签的概率分布建立简洁的模型。得到的分类器会被用于为测试实例贴上分类标签，其中，测试实例的分类<strong>特征</strong>是已知的，但其分类<strong>标签</strong>是未知的。本文讨论各种有监督机器学习分类技术。当然，单独一篇文章，无法遍及所有的有监督机器学习分类算法（也称为归纳分类算法），然而我们希望我们所引用的文献可以覆盖主要的理论主题，为正在有趣的研究方向上进行研究的研究者提供指引，并为一些可能的，目前尚未被研究的研究偏好的组合，提出提议。</p>
+<h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><p>&#160; &#160; &#160; &#160;分类，数据挖掘技术，智能数据分析，学习算法</p>
+<hr>
+<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><p>&#160; &#160; &#160; &#160;机器学习（ML）有几种应用，其中最重要的是数据挖掘。人们往往容易在分析过程中犯错，或者可能在尝试建立多个特征之间的关系时。这使他们很难找到某些问题的解决方案。机器学习通常可以成功地应用于这些问题，提高系统和机器设计的效率。<br>&#160; &#160; &#160; &#160;机器学习算法使用的任何数据集中的每个实例都使用相同的一组特征来表示。这些特征可以是连续的，分类的或二进制的。如果给出具有已知标签的实例（相应的正确输出），那么学习被称为监督（参见表1），与无监督学习相反，无监督学习的实例是未标记的。通过应用这些无监督（聚类）算法，研究人员希望发现未知但有用的项目类别（Jain等，1999）。另一种机器学习是强化学习（Barto＆Sutton，1997）。由环境（外部训练员）提供给学习系统的训练信息是<strong>标量强化信号</strong>的形式，由系统运行良好程度来度量。学习者不会被告知要采取哪些行动，而是必须通过依次尝试每个行动来发现哪些行动产生最佳奖励。<br>&#160; &#160; &#160; &#160;许多ML的应用包括可以设置为监督任务。 在本文中，我们专注于实现这一目标所必需的技术。 特别是，这项工作涉及其中实例的输出只接受离散，无序值的分类问题。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-29-15617719545361.jpg" alt><br>表1：具有已知标签的实例（相应的正确输出）    </p>
+<p>&#160; &#160; &#160; &#160;我们限制了对最近评审期刊，出版书籍和会议的参考。此外，我们还增加了一些关于开始讨论的特定研究领域的原始工作的参考文献。关于ML包含的内容的简要回顾可以在（Dutton＆Conroy，1996）中找到。 De Mantaras和Armengol（1998）也提出了基于逻辑和实例的学习分类器的历史调查。应提醒读者，单篇文章不能全面回顾所有分类学习算法。相反，我们的目标是提供每种学习技术中现有研究方向的代表性样本。在我们列出的每个领域，还有许多其他论文更全面地详细介绍了相关工作。<br>&#160; &#160; &#160; &#160;我们的下一部分涉及监督机器学习的广泛问题，例如数据预处理和特征选择。逻辑/符号技术在第3节中描述，而基于感知器的技术在第4节中进行了分析.ML的统计技术在第5节中介绍。第6节涉及基于实例的学习者，而第7节涉及最新的监督ML技术 - 支持向量机（SVM）。在第8节中，给出了关于分类器选择的一些一般方向。最后，最后一节总结了这项工作。</p>
+<hr>
+<h1 id="2-监督学习算法的广泛问题"><a href="#2-监督学习算法的广泛问题" class="headerlink" title="2.监督学习算法的广泛问题"></a>2.监督学习算法的广泛问题</h1><p>&#160; &#160; &#160; &#160;归纳机器学习是从实例（训练集中的示例）学习一组规则的过程，或者更一般地说，创建可用于概括新实例的分类器。 将监督ML应用于现实问题的过程如图1所示。 </p>
+<p><img src="http://psynnwlln.bkt.clouddn.com/2019-07-01-15619668479525.jpg" alt><br>    图1.监督学习的过程      </p>
+<p>&#160; &#160; &#160; &#160;第一步是收集数据集。 如果有必要的专家，那么他/她可以建议哪些领域（属性，特征）是最有用的。 如果没有，那么最简单的方法就是“蛮力”，这意味着测量所有可用的东西，希望能够找出正确的（信息性的，相关的）特征。 但是，通过“强力”方法收集的数据集并不直接适用于归纳。 它在大多数情况下<strong>包含噪声和缺失的特征值</strong>，因此需要大量的预处理（Zhang et al。，2002）。<br>&#160; &#160; &#160; &#160;第二步是数据准备和数据预处理。 根据具体情况，研究人员可以选择多种方法来处理缺失的数据（Batista＆Monard，2003）。 Hodge＆Austin（2004）最近推出了一项关于异常（噪声）检测的当代技术的调查。 这些研究人员已经确定了这些技术的优缺点。 实例选择不仅用于处理噪声，还用于应对从非常大的数据集中学习的不可行性。 这些数据集中的实例选择是一个优化问题，试图在最小化样本量的同时保持数据挖掘质量（Liu和Motoda，2001）。 它减少了数据并使数据挖掘算法能够在非常大的数据集中有效地运行和工作。 有多种从大型数据集中采样实例的程序（Reinartz，2002）。<br>&#160; &#160; &#160; &#160;特征子集选择是识别和删除尽可能多的不相关和冗余特征的过程（Yu和Liu，2004）。 这降低了数据的维度，使数据挖掘算法能够更快，更有效地运行。 许多特征彼此依赖的事实经常过度地影响监督的ML分类模型的准确性。 通过从基本特征集构建新特征可以解决这个问题（Markovitch＆Rosenstein，2002）。 这种技术称为特征构造/转换。 这些新生成的特征可能会创建更简洁和准确的分类器。 此外，有意义的特征的发现有助于更好地理解所产生的分类器，并更好地理解所学习的概念。</p>
+<h2 id="2-1-算法选择"><a href="#2-1-算法选择" class="headerlink" title="2.1 算法选择"></a>2.1 算法选择</h2><p>我们应该选择哪种特定的学习算法是关键步骤。一旦初步测试被认为是令人满意的，分类器（从未标记的实例到类的映射）可用于常规使用。分类器的评估通常基于<strong>预测准确度（正确预测的百分比除以预测的总数）</strong>。至少有三种技术用于计算分类器的准确度。一种技术是通过分裂训练集，使用三分之二进行训练，剩下的部分用于评估。在另一种称为交叉验证的技术中，训练集被分成互斥的和相等大小的子集，并且对于每个子集，分类器被训练在所有其他子集的并集上。因此，每个子集的错误率的平均值是分类器的错误率的估计。留一法验证是交叉验证的特例。所有测试子集都包含一个实例。当然，这种类型的验证在计算上更昂贵，但在需要对分类器的错误率进行最准确的估计时是有用的。<br>如果错误率评估不令人满意，我们必须返回监督ML过程的前一阶段（如图1所示）。 必须检查各种因素：也许是问题的相关特征不被使用，需要更大的训练集，问题的维度太高，所选算法不合适或需要参数调整。 另一个问题可能是数据集不平衡（Japkowicz＆Stephen，2002）。<br>用于比较监督ML算法的常用方法是对特定数据集上训练的分类器的准确度进行统计比较。如果我们有足够的数据供应，我们可以采样大量N的训练集，在每个训练集上运行两个学习算法，并估计大型测试集上每对分类器的准确度差异。这些差异的平均值是对大小为N的所有可能训练集的泛化误差的预期差异的估计，并且它们的方差是对总集合中分类器的方差的估计。我们的下一步是执行配对t检验以检查零假设之间的平均差异为零的零假设。此测试可能会产生两种类型的错误。类型I错误是测试错误地拒绝原假设的概率（即，尽管没有，但它发现“显着”差异）。类型II错误是在实际存在差异时不拒绝零假设的概率。测试的I类错误将接近所选的显着性水平。</p>
+<h1 id="3-基于逻辑的算法"><a href="#3-基于逻辑的算法" class="headerlink" title="3 基于逻辑的算法"></a>3 基于逻辑的算法</h1><p>在本节中，我们将集中讨论两组逻辑（符号）学习方法：决策树和基于规则的分类器。</p>
+<h2 id="3-1-决策树"><a href="#3-1-决策树" class="headerlink" title="3.1 决策树"></a>3.1 决策树</h2><p>Murthy（1998）提供了决策树工作的概述，以及它们对机器学习领域的新手和从业者的有用性的样本。 因此，在这项工作中，除了对决策树的简要描述外，我们将参考一些比Murthy的文章更近的作品以及之前发表的一些非常重要的文章。 决策树是通过基于特征值对实例进行排序来对实例进行分类的树。 决策树中的每个节点表示要分类的实例中的特征，并且每个分支表示节点可以采用的值。 实例从根节点开始分类，并根据其特征值进行排序。 图2是表2的训练集的决策树的示例。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-07-03-15621461438509.jpg" alt><br>使用图2中描述的决策树作为示例，实例<at1 = a1，at2="b2，at3" a3，at4="b4">将排序到节点：at1，at2，最后at3，这将对实例进行分类 为正（由值“是”表示）。 构造最优二元决策树的问题是NP完全问题，因此理论家已经寻找有效的启发式算法来构造近似最优决策树。<br>最佳划分训练数据的功能将是树的根节点。 有许多方法可以找到最能划分训练数据的特征，例如信息增益（Hunt等，1966）和基尼指数（Breiman等，1984）。 虽然近视度量独立地估计每个属性，但ReliefF算法（Kononenko，1994）在其他属性的上下文中估计它们。 然而，大多数研究得出的结论是没有单一的最佳方法（Murthy，1998）。 在决定应在特定数据集中使用哪个度量时，各个方法的比较可能仍然很重要。 然后对分割数据的每个分区重复相同的过程，创建子树，直到训练数据被分成同一类的子集。<br>图3给出了构建决策树的一般伪代码。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-07-04-15622173186326.jpg" alt><br>图3:用于构建决策树的伪代码<br>如果在训练集上测试时，存在一个比h误差大的假设h’，但是在整个数据集上测试时误差小于h，则决策树或者任何学习假设h就被成为过渡拟合训练数据。决策树归纳算法可以使用两种常用方法来避免过度拟合训练数据：i）在训练算法达到完全符合训练数据的点之前停止训练算法，ii）修剪诱导决策树。 如果两棵树采用相同类型的测试并且具有相同的预测准确度，则通常优选叶子较少的树。 Breslow＆Aha（1997）调查树简化方法以提高其可理解性。<br>解决过度拟合的最直接方法是在决策树增长到其完整大小之前预先修剪决策树。解决过度拟合的最直接方法是通过不允许决策树增长到其完整大小来预先修剪决策树。 建立诸如特征质量度量的阈值测试之类的非平凡终止标准可以做到这一点。 决策树分类器通常采用后期修剪技术来评估决策树的性能，因为它们通过使用验证集进行修剪。 可以删除任何节点并为其分配最常见的训练实例类。 在（Elomaa，1999）中提出了众所周知的修剪方法的比较研究。 Elomaa（1999）得出结论，没有一种最好的修剪方法。 更多细节，不仅可以进行后期处理，还可以进行关于决策树算法预处理的更多细节（Bruha，2000）。<br>尽管分而治之算法很快，但在具有数十万个实例的任务中，效率可能变得很重要。 最耗时的方面是对数字特征上的实例进行排序以找到最佳阈值t。 如果仅确定一次数字特征的可能阈值，有效地将特征转换为离散间隔，或者如果阈值是从实例的子集确定的，则可以加速这种情况。 Elomaa＆Rousu（1999）指出，使用C4.5的二元离散化需要大约使用C4.5多重分裂的一半训练时间。 此外，根据他们的实验，数值特征的多重分裂在二进制分裂的预测精度方面没有任何优势。<br>决策树通常是单变量的，因为它们使用基于每个内部节点的单个特征的分割。对于需要对角分区的问题，大多数决策树算法都无法很好地执行。实例空间的划分与一个变量的轴正交并且与所有其他轴平行。因此，分割后得到的区域都是超矩形。但是，有一些方法可以构建多变量树。一个例子是Zheng（1998），他通过使用逻辑运算符（例如连词，否定和析取）构造新的二元特征来提高决策树的分类准确性。此外，Zheng（2000）创造了至少M-of-N特征。对于给定的实例，如果其条件中的至少M个条件对于实例为真，则至少M-of-N表示的值为真，否则为假。 Gama和Brazdil（1999）将决策树与线性判别结合起来构建多变量决策树。在此模型中，新特征计算为先前特征的线性组合。<br>由于复制问题，决策树对于某些概念可能是更复杂的表示。 解决方案是使用算法在节点处实现复杂功能以避免复制。 Markovitch和Rosenstein（2002）提出了FICUS构造算法，该算法接收监督学习的标准输入以及特征表示规范，并使用它们来产生一组生成的特征。 虽然FICUS在某些方面与其他特征构造算法类似，但其主要优势在于其通用性和灵活性。 FICUS旨在执行特征生成，因为任何特征表示规范都符合其通用语法。<br>建立决策树的文献中最知名的算法是C4.5（Quinlan，1993）。 C4.5是Quinlan早期ID3算法的延伸（Quinlan，1979）。 比较决策树和其他学习算法的最新研究之一已经完成（Tjen-Sien Lim等人，2000）。 研究表明C4.5具有错误率和速度的非常好的组合。 2001年，Ruggieri对C4.5算法的运行时行为进行了分析评估，强调了一些效率改进。 基于这种分析评估，他实现了一种更高效的算法版本，称为EC4.5。 他认为他的实现计算了与C4.5相同的决策树，性能增益高达五倍。<br>C4.5假设训练数据适合记忆，因此，Gehrke等人。 （2000）提出了Rainforest，这是一个开发快速和可扩展算法的框架，用于构建决策树，可以优雅地适应可用的主内存量。 很明显，在大多数决策树算法中; 在建造阶段，在树木的生长部分上“浪费”了大量的努力，随后在修剪阶段进行修剪。 Rastogi＆Shim（2000）提出了PUBLIC，一种改进的决策树分类器，它将第二个“修剪”阶段与最初的“建筑”阶段相结合。 在PUBLIC中，如果确定节点将在随后的修剪阶段被修剪，则在构建阶段期间不扩展节点。<br>Olcay和Onur（2007）展示了如何以三种方式并行化C4.5算法：（i）基于特征，（ii）基于节点（iii）基于数据的方式。 Baik和Bala（2004）提出了基于代理的决策树分布式学习方法的初步工作。<br>总而言之，决策树最有用的特征之一是它们的可理解性。 人们可以很容易地理解为什么决策树将实例分类为属于特定类。 由于决策树构成测试的层次结构，因此通常通过将示例传递到检测到未知特征值的节点的所有分支来处理分类期间的未知特征值，并且每个分支输出类分布。 输出是总和为1的不同类分布的组合。在决策树中做出的假设是属于不同类的实例在其至少一个特征中具有不同的值。 在处理离散/分类特征时，决策树往往表现更好。</at1></p>
+<h2 id="3-2-学习规则集"><a href="#3-2-学习规则集" class="headerlink" title="3.2 学习规则集"></a>3.2 学习规则集</h2><p>通过为从树中的根到叶子的每条路径创建单独的规则，可以将决策树转换为一组规则（Quinlan，1993）。 但是，也可以使用各种基于规则的算法从训练数据直接引出规则。 Furnkranz（1999）对基于规则的方法的现有工作进行了很好的概述。<br>分类规则通过析取范式（DNF）表示每个类。 k-DNF表达式为：（X1∧X2∧…∧Xn）∨（Xn +1∧Xn+2∧… X2n）∨…∨（X（k-1）n +1∧X（k- 1）n +2∧…∧Xkn），其中k是分离数，n是每个分离中的连词数，Xn是在字母X1，X2，…，Xj∪~X1，~X2上定义的，…〜XJ。 目标是构建与训练数据一致的最小规则集。 大量学习规则通常表明学习算法试图“记住”训练集，而不是发现管理训练集的假设。 一个单独的征服算法（覆盖算法）搜索解释其部分训练实例的规则，分离这些实例并通过学习更多规则递归地征服剩余的实例，直到没有实例。 在图4中，给出了规则学习器的一般伪代码。<br>规则学习的启发式和决策树的启发式之间的区别在于，后者评估了许多脱节集的平均质量（每个被测试的特征值的一个），而规则学习者仅评估集合的质量。 候选规则涵盖的实例。 更高级的规则学习者与这种简单的伪代码不同，主要是通过添加额外的机制来防止训练数据的过度拟合，例如通过使用质量测量来停止专业化过程或通过在单独的修剪中推广过于专业化的规则 阶段（Furnkranz，1997）。<br>因此，规则归纳系统生成具有高可预测性或可靠性的决策规则是很重要的。这些属性通常通过称为规则质量的函数来度量。在规则归纳和分类过程中需要规则质量测量，例如J-measure（Smyth和Goodman，1990）。在规则归纳中，规则质量度量可以用作规则规范和/或泛化过程中的标准。在分类中，规则质量值可以与每个规则相关联，以在要被分类的示例满足多个规则时解决冲突。 An和Cercone（2000）调查了许多统计和经验规则质量指标。 Furnkranz和Flach（2005）通过可视化他们的评估指标，对分离和征服或覆盖规则学习算法的行为进行了分析。当使用无序规则集时，规则之间可能发生冲突，即，两个或更多规则覆盖相同的示例但预测不同的类。 Lindgren（2004）最近对用于解决此类冲突的方法进行了调查。<br>RIPPER是一种众所周知的基于规则的算法（Cohen，1995）。 它通过重复生长和修剪的过程形成规则。 在成长阶段，规则更加严格，以便尽可能地拟合训练数据。 在修剪阶段，规则的限制性较小，以避免过度拟合，这可能导致在看不见的实例上表现不佳。 RIPPER通过从最少到最流行的顺序处理多个类来处理多个类，然后将每个类按顺序处理为一个独特的两类问题。 基于决策规则的其他基本学习分类器包括AQ家族（Michalski和Chilausky，1980）和CN2（Clark和Niblett，1989）。 Bonarini（2000）概述了基于模糊规则的分类器。 模糊逻辑试图通过允许使用重叠的类定义来改进分类和决策支持系统。<br>Furnkranz（2001）研究了使用循环二值化（或成对分类）作为一种处理具有独立和征服规则学习算法的多类问题的技术。循环二值化将c类问题转换为c（c-1）/ 2两类问题&lt;i，j&gt;，每组{i，j}一个，i = 1 … c-1 ，j = i + 1 … c。问题&lt;i，j&gt;的二元分类器用类i和j的例子训练，而类k≠i，j的例子对于这个问题被忽略。当然，关键点在于确定如何解码成对分类器的预测以进行最终预测。 Furnkranz（2001）实现了一种简单的投票技术：在对新示例进行分类时，每个学习的基本分类器确定该示例更可能属于哪两个类。获胜者被分配一个点，最后，算法预测积累了最多点的类。他的实验结果表明，与传统的，有序的或无序的二值化相比，循环法可以在准确性方面产生显着的提高而不会有糟糕的性能。<br>还有许多其他基于规则的学习算法。 Furnkranz（1999）提到了他们中的大多数。 PART算法通过重复生成部分决策树来推断规则，从而将规则生成的两个主要范例结合起来 - 从决策树创建规则和分离和征服规则学习技术。 一旦构建了部分树，就会从中提取单个规则，因此PART算法避免了后处理（Frank和Witten，1998）。<br>对于学习二元问题的任务，规则比决策树更容易理解，因为典型的基于规则的方法只为正类学习一套规则。另一方面，如果要学习多个类的定义，则必须分别为每个类单独运行基于规则的学习器。对于每个单独的类，获得单独的规则集，并且这些集可能不一致（特定实例可能被分配多个类）或不完整（没有类可能被分配给特定实例）。这些问题可以通过决策列表来解决（规则集中的规则应该被排序，规则仅适用于前面的规则都不适用的情况）但是使用决策树方法时，它们根本不会发生。此外，分而治之的方法（由决策树使用）通常比单独和征服方法（由基于规则的算法使用）更有效。分离和征服算法一次查看一个类，并尝试生成唯一标识类的规则。他们这样做独立于训练集中的所有其他类。因此，对于小型数据集，最好使用一次考虑整个集合的分而治之算法。<br>总而言之，基于规则的分类器最有用的特征是它们的可理解性。 此外，即使一些基于规则的分类器可以处理数字特征，一些专家提出这些特征应该在归纳之前进行离散化，以便减少训练时间并提高分类准确性（An和Cercone，1999）。 通过使用用户的背景知识（Flach和Lavrac，2000）或自动特征构造算法（Markovitch和Rosenstein，2002）组合特征（例如在决策树中），可以提高规则学习算法的分类准确性。</p>
+<h1 id="4-基于感知器的技术"><a href="#4-基于感知器的技术" class="headerlink" title="4 基于感知器的技术"></a>4 基于感知器的技术</h1><p>其他众所周知的算法基于感知器的概念（Rosenblatt，1962）。<br>单层感知器可以简要描述如下：<br>如果x1到xn是输入特征值并且w1到wn是连接权重/预测向量（通常是区间[-1,1]中的实数），则感知器计算加权输入的总和：xiwi和输出经过可调阈值 ：如果总和高于阈值，则输出为1; 否则它是0。<br>感知器算法用于从一批训练实例中学习的最常见方式是通过训练集重复运行算法，直到找到在所有训练集上正确的预测向量。 然后，该预测规则用于预测测试集上的标签。<br>WINNOW（Littlestone＆Warmuth，1994）基于感知器的想法，并按如下方式更新其权重。如果预测值y = 0且实际值y = 1，则权重太低;因此，对于每个特征，使得xi = 1，wi = wi·α，其中α是大于1的数，称为促销参数。如果预测值y = 1且实际值y = 0，那么权重太高;因此，对于每个特征xi = 1，它通过设置wi = wi·β来减小相应的权重，其中0 &lt;β&lt;1，称为降级参数。通常，WINNOW是指数更新算法的示例。相关特征的权重呈指数增长，但不相关特征的权重呈指数级缩小。由于这个原因，实验证明（WINum，1997）WINNOW可以快速适应目标函数的变化（概念漂移）。目标函数（例如用户首选项）在时间上不是静态的。例如，为了使决策树算法能够响应变化，有必要决定可以删除哪些旧的训练实例。已经开发了许多类似于WINNOW的算法，例如Auer＆Warmuth（1998）的算法。<br>Freund＆Schapire（1999）创建了一种名为voted-perceptron的新算法，该算法在训练期间存储更多信息，然后使用这些精细信息来生成关于测试数据的更好预测。 它在训练期间维护的信息是在每个错误之后生成的所有预测向量的列表。 对于每个这样的向量，它计算它“幸存”的迭代次数，直到出现下一个错误; Freund＆Schapire将此计数称为预测向量的“权重”。 为了计算预测，算法计算每个预测向量的二进制预测，并通过加权多数表决来组合所有这些预测。 使用的重量是上述存活时间。<br>总之，我们已经讨论了类似感知器的线性算法，强调了在处理不相关特征时的优越时间复杂度。 当有许多功能，但只有少数相关功能时，这可能是一个相当大的优势。 通常，所有类似感知器的线性算法都是随时在线算法，无论它们运行多长时间都能产生有用的答案（Kivinen，2002）。 它们运行的时间越长，产生的结果就越好。 最后，类似感知器的方法是二元的，因此在多类问题的情况下，必须将问题减少到一组多个二元分类问题。</p>
+<h2 id="4-1-单层感知器"><a href="#4-1-单层感知器" class="headerlink" title="4.1 单层感知器"></a>4.1 单层感知器</h2><h2 id="4-2-多层感知器"><a href="#4-2-多层感知器" class="headerlink" title="4.2 多层感知器"></a>4.2 多层感知器</h2><h2 id="4-3-RBF-径向基-神经网络"><a href="#4-3-RBF-径向基-神经网络" class="headerlink" title="4.3 RBF(径向基)神经网络"></a>4.3 RBF(径向基)神经网络</h2><h1 id="5-统计学习算法"><a href="#5-统计学习算法" class="headerlink" title="5 统计学习算法"></a>5 统计学习算法</h1><h2 id="5-1-朴素贝叶斯分类器"><a href="#5-1-朴素贝叶斯分类器" class="headerlink" title="5.1 朴素贝叶斯分类器"></a>5.1 朴素贝叶斯分类器</h2><h2 id="5-2-贝叶斯网络"><a href="#5-2-贝叶斯网络" class="headerlink" title="5.2 贝叶斯网络"></a>5.2 贝叶斯网络</h2><h1 id="6-基于实例的学习"><a href="#6-基于实例的学习" class="headerlink" title="6 基于实例的学习"></a>6 基于实例的学习</h1><h1 id="7-支持向量机"><a href="#7-支持向量机" class="headerlink" title="7 支持向量机"></a>7 支持向量机</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/18.大规模机器学习/" rel="next" title="18.大规模机器学习">
+                <i class="fa fa-chevron-left"></i> 18.大规模机器学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/18/7.18-python/" rel="prev" title="7.18-python">
+                7.18-python <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">左一鸣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词"><span class="nav-number">1.1.</span> <span class="nav-text">关键词</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-介绍"><span class="nav-number">2.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-监督学习算法的广泛问题"><span class="nav-number">3.</span> <span class="nav-text">2.监督学习算法的广泛问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-算法选择"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 算法选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-基于逻辑的算法"><span class="nav-number">4.</span> <span class="nav-text">3 基于逻辑的算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-决策树"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 决策树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-学习规则集"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 学习规则集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-基于感知器的技术"><span class="nav-number">5.</span> <span class="nav-text">4 基于感知器的技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-单层感知器"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 单层感知器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-多层感知器"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 多层感知器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-RBF-径向基-神经网络"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 RBF(径向基)神经网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-统计学习算法"><span class="nav-number">6.</span> <span class="nav-text">5 统计学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-朴素贝叶斯分类器"><span class="nav-number">6.1.</span> <span class="nav-text">5.1 朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-贝叶斯网络"><span class="nav-number">6.2.</span> <span class="nav-text">5.2 贝叶斯网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-基于实例的学习"><span class="nav-number">7.</span> <span class="nav-text">6 基于实例的学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-支持向量机"><span class="nav-number">8.</span> <span class="nav-text">7 支持向量机</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左一鸣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://mingo.pro">zym的MacBook pro</a> 强力驱动</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
