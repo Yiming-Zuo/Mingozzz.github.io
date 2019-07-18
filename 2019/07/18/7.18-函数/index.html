@@ -86,23 +86,15 @@
 
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="18.大规模机器学习">
-<meta property="og:url" content="http://yoursite.com/2019/06/11/18.大规模机器学习/index.html">
+<meta property="og:title" content="7.18-函数（编辑中）">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/7.18-函数/index.html">
 <meta property="og:site_name" content="Mingozzz&#39; blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2019/07/18/5d2fe8eb47b6255852.png">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603029739326.jpg">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603030196728.jpg">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603032437220.jpg">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603033552079.jpg">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603034952092.jpg">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603035426304.jpg">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603035664493.jpg">
-<meta property="og:image" content="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603037801054.jpg">
-<meta property="og:updated_time" content="2019-07-18T03:35:40.764Z">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png">
+<meta property="og:updated_time" content="2019-07-18T08:07:41.586Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="18.大规模机器学习">
-<meta name="twitter:image" content="https://i.loli.net/2019/07/18/5d2fe8eb47b6255852.png">
+<meta name="twitter:title" content="7.18-函数（编辑中）">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png">
 
 
 
@@ -132,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/11/18.大规模机器学习/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/18/7.18-函数/">
 
 
 
 
 
-  <title>18.大规模机器学习 | Mingozzz' blog</title>
+  <title>7.18-函数（编辑中） | Mingozzz' blog</title>
   
 
 
@@ -305,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/18.大规模机器学习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/7.18-函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="左一鸣">
@@ -322,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">18.大规模机器学习</h1>
+          <h1 class="post-title" itemprop="name headline">7.18-函数（编辑中）</h1>
         
 
         <div class="post-meta">
@@ -334,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T21:05:09+08:00">
-                2019-06-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T14:05:42+08:00">
+                2019-07-18
               </time>
             
 
@@ -357,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -394,27 +386,12 @@
       
 
       
-        <p><img src="https://i.loli.net/2019/07/18/5d2fe8eb47b6255852.png" alt></p>
-<a id="more"></a>
-<h1 id="18-大规模机器学习"><a href="#18-大规模机器学习" class="headerlink" title="18.大规模机器学习"></a>18.大规模机器学习</h1><h2 id="18-1-学习大数据集"><a href="#18-1-学习大数据集" class="headerlink" title="18.1 学习大数据集"></a>18.1 学习大数据集</h2><p>如果我们有一个低方差的模型，增加数据集的规模可以帮助你获得更好的结果。我们应该怎样应对一个有100万条记录的训练集？</p>
-<p>以线性回归模型为例，每一次梯度下降迭代，我们都需要计算训练集的误差的平方和，如果我们的学习算法需要有20次迭代，这便已经是非常大的计算代价。</p>
-<p>首先应该做的事是去检查一个这么大规模的训练集是否真的必要，也许我们只用1000个训练集也能获得较好的效果，我们可以绘制学习曲线来帮助判断。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603029739326.jpg" alt></p>
-<hr>
-<h2 id="18-2-随机梯度下降"><a href="#18-2-随机梯度下降" class="headerlink" title="18.2 随机梯度下降"></a>18.2 随机梯度下降</h2><p>如果我们一定需要一个大规模的训练集，我们可以尝试使用随机梯度下降法来代替批量梯度下降法。<br>在随机梯度下降法中，我们定义代价函数为一个单一训练实例的代价：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603030196728.jpg" alt><br>随机梯度下降算法为：首先对训练集随机“洗牌”，然后： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Repeat (usually anywhere between1-10)&#123;</span><br><span class="line">for i=1:m&#123;</span><br><span class="line">θ:=θj-α(hθ(x(i))-y(i))xj(i)</span><br><span class="line">​(for j=0:n)</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
-<p>随机梯度下降算法在每一次计算之后便更新参数  ，而不需要首先将所有的训练集求和，在梯度下降算法还没有完成一次迭代时，随机梯度下降算法便已经走出了很远。但是这样的算法存在的问题是，不是每一步都是朝着”正确”的方向迈出的。因此算法虽然会逐渐走向全局最小值的位置，但是可能无法站到那个最小值的那一点，而是在最小值点附近徘徊。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603032437220.jpg" alt></p>
-<hr>
-<h2 id="18-3-Mini-Batch梯度下降"><a href="#18-3-Mini-Batch梯度下降" class="headerlink" title="18.3  Mini-Batch梯度下降"></a>18.3  Mini-Batch梯度下降</h2><p>小批量梯度下降算法是介于批量梯度下降算法和随机梯度下降算法之间的算法，每计算常数b次训练实例，便更新一次参数θ。</p>
-<p> <img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603033552079.jpg" alt><br>通常我们会令b在 2-100 之间。这样做的好处在于，我们可以用向量化的方式来循环b个训练实例，如果我们用的线性代数函数库比较好，能够支持平行处理，那么算法的总体表现将不受影响（与随机梯度下降相同）。</p>
-<hr>
-<h2 id="18-4-随机梯度下降收敛"><a href="#18-4-随机梯度下降收敛" class="headerlink" title="18.4 随机梯度下降收敛"></a>18.4 随机梯度下降收敛</h2><p>在批量梯度下降中，我们可以令代价函数J为迭代次数的函数，绘制图表，根据图表来判断梯度下降是否收敛。但是，在大规模的训练集的情况下，这是不现实的，因为计算代价太大了。</p>
-<p>在随机梯度下降中，我们在每一次更新θ之前都计算一次代价，然后每次x迭代后，求出这x次对训练实例计算代价的平均值，然后绘制这些平均值与x次迭代的次数之间的函数图表。<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603034952092.jpg" alt><br>当我们绘制这样的图表时，可能会得到一个颠簸不平但是不会明显减少的函数图像（如上面左下图中蓝线所示）。我们可以增加α来使得函数更加平缓，也许便能看出下降的趋势了（如上面左下图中红线所示）；或者可能函数图表仍然是颠簸不平且不下降的（如洋红色线所示），那么我们的模型本身可能存在一些错误。</p>
-<p>如果我们得到的曲线如上面右下方所示，不断地上升，那么我们可能会需要选择一个较小的学习率α。<br>我们也可以令学习率随着迭代次数的增加而减小，例如令：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603035426304.jpg" alt><br>随着我们不断地靠近全局最小值，通过减小学习率，我们迫使算法收敛而非在最小值附近徘徊。 但是通常我们不需要这样做便能有非常好的效果了，对α进行调整所耗费的计算通常不值得<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603035664493.jpg" alt></p>
-<h2 id="18-5-在线学习"><a href="#18-5-在线学习" class="headerlink" title="18.5 在线学习"></a>18.5 在线学习</h2><p>在线学习的算法与随机梯度下降算法有些类似，对单一的实例进行学习，而非对一个提前定义的训练集进行循环。<br>一旦对一个数据的学习完成了，我们便可以丢弃该数据，不需要再存储它了。这种方式的好处在于，我们的算法可以很好的适应用户的倾向性，算法可以针对用户的当前行为不断地更新模型以适应该用户。</p>
-<hr>
-<h2 id="18-6-放射化简和数据并行"><a href="#18-6-放射化简和数据并行" class="headerlink" title="18.6 放射化简和数据并行"></a>18.6 放射化简和数据并行</h2><p>映射化简和数据并行对于大规模机器学习问题而言是非常重要的概念。之前提到，如果我们用批量梯度下降算法来求解大规模数据集的最优解，我们需要对整个训练集进行循环，计算偏导数和代价，再求和，计算代价非常大。如果我们能够将我们的数据集分配给不多台计算机，让每一台计算机处理数据集的一个子集，然后我们将计所的结果汇总在求和。这样的方法叫做映射简化。</p>
-<p>具体而言，如果任何学习算法能够表达为，对训练集的函数的求和，那么便能将这个任务分配给多台计算机（或者同一台计算机的不同CPU核心），以达到加速处理的目的。</p>
-<p>例如，我们有400个训练实例，我们可以将批量梯度下降的求和任务分配给4台计算机进行处理：<br><img src="http://psynnwlln.bkt.clouddn.com/2019-06-12-15603037801054.jpg" alt><br>很多高级的线性代数函数库已经能够利用多核CPU的多个核心来并行地处理矩阵运算，这也是算法的向量化实现如此重要的缘故（比调用循环快）。</p>
+        <p><img src="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png" alt><br><a id="more"></a></p>
+<h1 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; help(abs) #通过help()查看函数的帮助信息</span><br><span class="line">              #http://docs.python.org/3/library/functions.html#abs官方文档</span><br><span class="line">&gt;&gt;&gt; abs(-20)  #abs()绝对值</span><br><span class="line">20</span><br><span class="line">&gt;&gt;&gt; max(1,2) </span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; int(&apos;123&apos;)</span><br><span class="line">123</span><br><span class="line">&gt;&gt;&gt; int(12.34)</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; str(123)</span><br><span class="line">&apos;123&apos;</span><br><span class="line">&gt;&gt;&gt; bool(1)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; bool(0)</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; bool(&apos;&apos;)</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; a=abs #变量a指向abs函数</span><br><span class="line">&gt;&gt;&gt; a(-1)</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; n1=255</span><br><span class="line">&gt;&gt;&gt; hex(n1) # hex()将整数转换为十六进制表示的字符串</span><br><span class="line">&apos;0xff&apos;</span><br><span class="line">&gt;&gt;&gt; n2=1000</span><br><span class="line">&gt;&gt;&gt; hex(n2)</span><br><span class="line">&apos;0x3e8&apos;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h1><h2 id="参数检查"><a href="#参数检查" class="headerlink" title="参数检查"></a>参数检查</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from abstest import my_abs #从abstest.py中导入my_abs函数</span><br><span class="line">&gt;&gt;&gt; def my_abs(x): #def-定义函数</span><br><span class="line">...     if not isinstance(x,(int,flase)): #参数检查isinstance()</span><br><span class="line">...             raise TypeError(&apos;bad operand type&apos;)</span><br><span class="line">...     if x&gt;=0:</span><br><span class="line">...             return(x) #没有return，返回None，return None简写为return</span><br><span class="line">...     if x&lt;0:</span><br><span class="line">...             return(-x)</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; my_abs(&apos;a&apos;)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 2, in my_abs</span><br><span class="line">NameError: name &apos;flase&apos; is not defined</span><br><span class="line">&gt;&gt;&gt; def nop():</span><br><span class="line">...     pass #pass语句=空函数，用作占位符（比如现在还没想好怎么写函数的代码，就可以先放一个pass，让代码能运行起来。）</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; age=18</span><br><span class="line">&gt;&gt;&gt; if age&gt;=18:</span><br><span class="line">...     pass</span><br></pre></td></tr></table></figure>
+<h2 id="返回多个值"><a href="#返回多个值" class="headerlink" title="返回多个值"></a>返回多个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import math</span><br><span class="line">&gt;&gt;&gt; def move(x,y,step,angle=0):</span><br><span class="line">...     nx=x+step*math.cos(angle)</span><br><span class="line">...     ny=y-step*math.sin(angle)</span><br><span class="line">...     return(nx,ny)</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; x,y=move(100,100,60,math.pi/6)</span><br><span class="line">&gt;&gt;&gt; print(x,y)</span><br><span class="line">151.96152422706632 70.0</span><br><span class="line">&gt;&gt;&gt; r=move(100,100,60,math.pi/6)</span><br><span class="line">&gt;&gt;&gt; print(r) #返回多值其实是返回一个tuple</span><br><span class="line">(151.96152422706632, 70.0)  #语法上返回一个tuple可以省略括号</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#函数求解</span><br><span class="line">def quadratic(a,b,c):</span><br><span class="line">	d=b**2-4*a*c</span><br><span class="line">	x1=(-b+d)/(2*a)</span><br><span class="line">	x2=(-b-d)/(2*a)</span><br><span class="line">	if d&lt;0:</span><br><span class="line">		return(&apos;flase&apos;)</span><br><span class="line">	elif d==0:</span><br><span class="line">		return(x1)</span><br><span class="line">	else:</span><br><span class="line">		return(x1,x2)</span><br><span class="line">r=quadratic(1,2,1)</span><br><span class="line">print(r)</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>定义函数时，需要确定函数名和参数个数；<br>如果有必要，可以先对参数的数据类型做检查；<br>函数体内部可以用return随时返回函数结果；<br>函数执行完毕也没有return语句时，自动return None。<br>函数可以同时返回多个值，但其实就是一个tuple。</p>
 
       
     </div>
@@ -439,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/09/17.推荐系统/" rel="next" title="17.推荐系统">
-                <i class="fa fa-chevron-left"></i> 17.推荐系统
+              <a href="/2019/07/17/7.17-python基础/" rel="next" title="7.17-python基础">
+                <i class="fa fa-chevron-left"></i> 7.17-python基础
               </a>
             
           </div>
@@ -448,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/01/监督学习：分类技术综述/" rel="prev" title="Supervised Machine Learning: A Review of Classification Techniques（编辑中）">
-                Supervised Machine Learning: A Review of Classification Techniques（编辑中） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -574,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#18-大规模机器学习"><span class="nav-number">1.</span> <span class="nav-text">18.大规模机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#18-1-学习大数据集"><span class="nav-number">1.1.</span> <span class="nav-text">18.1 学习大数据集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-2-随机梯度下降"><span class="nav-number">1.2.</span> <span class="nav-text">18.2 随机梯度下降</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-3-Mini-Batch梯度下降"><span class="nav-number">1.3.</span> <span class="nav-text">18.3  Mini-Batch梯度下降</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-4-随机梯度下降收敛"><span class="nav-number">1.4.</span> <span class="nav-text">18.4 随机梯度下降收敛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-5-在线学习"><span class="nav-number">1.5.</span> <span class="nav-text">18.5 在线学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-6-放射化简和数据并行"><span class="nav-number">1.6.</span> <span class="nav-text">18.6 放射化简和数据并行</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#调用函数"><span class="nav-number">1.</span> <span class="nav-text">调用函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义函数"><span class="nav-number">2.</span> <span class="nav-text">定义函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数检查"><span class="nav-number">2.1.</span> <span class="nav-text">参数检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回多个值"><span class="nav-number">2.2.</span> <span class="nav-text">返回多个值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.3.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
             
 
           </div>
