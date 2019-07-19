@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mining and Summarizing Customer Reviews（编辑中）">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/挖掘和总结客户评论/index.html">
+<meta property="og:site_name" content="Mingozzz&#39; blog">
+<meta property="og:description" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/07/19/挖掘和总结客户评论/![](http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-19-15635206799145.jpg">
+<meta property="og:updated_time" content="2019-07-19T08:01:08.292Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mining and Summarizing Customer Reviews（编辑中）">
+<meta name="twitter:description" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png)">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/19/挖掘和总结客户评论/![](http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/19/挖掘和总结客户评论/">
+
+
+
+
+
+  <title>Mining and Summarizing Customer Reviews（编辑中） | Mingozzz' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mingozzz' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+    <script src="/live2d-widget/autoload.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/挖掘和总结客户评论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左一鸣">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mingozzz' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mining and Summarizing Customer Reviews（编辑中）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T15:57:02+08:00">
+                2019-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/论文/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="![](http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg" alt><br><a href="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png" target="_blank" rel="noopener">https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png</a>)<br><a id="more"></a></p>
+<p>挖掘和总结客户评论</p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在网上销售产品的商家经常要求他们的客户审查他们购买的产品和相关服务。随着电子商务变得越来越流行，产品接收的客户评论数量迅速增长。对于受欢迎的产品，评论数量可以是数百甚至数千。这使得潜在客户难以阅读它们以便就是否购买产品做出明智的决定。这也使得产品制造商难以跟踪并管理客户意见。对于制造商而言，存在额外的困难，因为许多商家可能销售相同的产品，制造商通常生产多种产品。在本研究中，我们的目标是挖掘并总结产品的所有客户评论。此摘要任务与传统的文本摘要不同，因为我们仅挖掘客户表达其意见的产品的功能以及意见是积极的还是消极的。我们不会通过选择子集或重写评论中的一些原始句子来总结评论，以捕获经典文本摘要中的要点。我们的任务分三步进行：1.挖掘客户评论过的产品功能; 2.在每次审查中确定意见句子，并确定每个意见判决是正面还是负面; 3.总结结果。本文提出了几种执行这些任务的新技术。我们使用在线销售的许多产品的评论的实验结果证明了这些技术的有效性。<br>关键词：文本挖掘，情感分类，总结，评论。</p>
+<hr>
+<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h1><p>随着电子商务的快速发展，越来越多的产品在网上销售，越来越多的人也在网上购买产品。为了提高客户满意度和购物体验，在线商家使其客户能够审查或表达他们购买的产品的意见已成为一种常见做法。随着越来越多的普通用户对Web感到满意，越来越多的人正在撰写评论。结果，产品收到的评论数量迅速增长。一些受欢迎的产品可以在一些大型商家网站上获得数百条评论。此外，许多评论很长，只有少数句子包含对产品的意见。这使得潜在客户难以阅读它们以便在是否购买产品时做出明智的决定。如果他/她只阅读一些评论，他/她可能会有偏见。大量的评论也使产品制造商难以跟踪客户对其产品的看法。对于产品制造商而言，存在额外的困难，因为许多商家站点可能销售其产品，并且制造商可能（几乎总是）生产多种产品。<br>在本研究中，我们研究了生成基于特征的在线销售产品的客户评论摘要的问题。 这里，功能广泛地表示产品功能（或属性）和功能。 给定一组特定产品的客户评论，该任务涉及三个子任务：（1）识别客户已表达其意见的产品的特征（称为产品特征）; （2）针对每个特征，确定给出正面或负面意见的评论句子; （3）使用发现的信息生成摘要。<br>让我们用一个例子来说明基于特征的摘要。 假设我们总结了特定数码相机digital_camera_1的评论。 摘要如下所示：<br><img src="http://qny.zuoyiming.com/2019-07-19-15635206799145.jpg" alt><br>Digital_camera_1:<br>    特点：画质<br>        正面：253<br>                &lt;个人评论句&gt;<br>        负面：6<br>                &lt;个人评论句&gt;<br>    特征：相机尺寸<br>        正面：134<br>                &lt;个人评论句&gt;<br>        负面：10<br>                &lt;个人评论句&gt;<br>…<br>在图1中，图像质量和（相机）尺寸是产品功能。 有253个顾客评论对图片质量表示了积极的看法，只有6个表达了负面看法。 &lt;个人评论语句&gt;链接指向特定句子和/或整个评论，对该特征给出正面或负面评论。<br>通过这种基于功能的摘要，潜在客户可以轻松了解现有客户对数码相机的看法。 如果他/她对某个特定功能非常感兴趣，他/她可以按照&lt;个人评论句子&gt;链接深入查看为什么现有客户喜欢它和/或他们抱怨什么。 对于制造商，可以组合来自多个商家站点的摘要，为其每个产品生成单个报告。<br>我们的任务与传统的文本摘要[15,39,36]有许多不同之处。 首先，我们的案例中的摘要是结构化的，而不是由大多数文本摘要系统生成的另一个（但更短的）自由文本文档。 其次，我们只对客户有意见的产品功能感兴趣，以及意见是积极的还是消极的。 我们不会通过从评论中选择或重写原始句子的子集来总结评论，以捕获其主要观点，如传统文本摘要中所述。<br>如上所述，我们的任务分三个主要步骤：<br>（1）挖掘客户评论过的产品功能。<br>我们利用数据挖掘和自然语言处理技术来执行此任务。 这部分研究已在[19]中报道。 但是，为了完整起见，我们将在本文中总结其技术并进行比较评估。<br>（2）在每次审查中确定意见句子，并确定每个意见判决是积极的还是消极的。<br>请注意，这些意见句子必须包含上面确定的一个或多个产品功能。 为了确定每个句子的意见取向（句子中表达的意见是正面还是负面），我们执行三个子任务。 首先，使用自然语言处理方法识别一组形容词（通常用于表达意见）。 这些词在本文中也称为意见词。 其次，对于每个观点词，我们确定其语义方向，例如正面或负面。 提出了一种使用WordNet [29,12]执行此任务的自举技术。 最后，我们决定每个句子的意见取向。 为此目的也给出了有效的算法。<br>（3）总结结果。 此步骤聚合先前步骤的结果，并以图1的格式显示它们。<br>第3节介绍了执行这些任务的详细技巧。 还实现了一种称为FBS（基于特征的摘要）的系统。 我们的实验结果与在线销售的5种产品的大量客户评论显示，FBS及其技术非常有效。</p>
+<hr>
+<h1 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2 相关工作"></a>2 相关工作</h1><p>我们的工作与Dave，Lawrence和Pennock在[9]关于评论语义分类的工作密切相关。使用来自某些网站的可用训练语料库，其中每个评论已经有一个类（例如，竖起拇指和拇指向下，或一些其他定量或二进制评级），他们设计并试验了许多用于构建情感分类器的方法。他们表明这样的分类器在测试评论中表现很好。他们还使用他们的分类器对从Web搜索结果获得的句子进行分类，这些句子是由搜索引擎使用产品名称作为搜索查询获得的。但是，由于句子包含的信息比审查少得多，因此性能有限。我们的工作在三个方面与他们的不同之处在于：（1）我们的重点不是对每个评论进行整体分类，而是对评论中的每个句子进行分类。在评论中，一些句子可能表达对某些产品特征的积极意见，而其他一些句子可能表达对某些其他产品特征的负面意见。 （2）[9]中的工作并未从审稿人发表意见的评论中挖掘出产品特征。 （3）我们的方法不需要语料库来执行任务。<br>在[30]中，Morinaga等人比较了一个类别中不同产品的评论，以查找目标产品的声誉。 但是，它没有总结评论，也没有挖掘审稿人表达意见的产品功能。 尽管他们确实发现了一些表示声誉的常用短语，但这些短语可能不是产品特征（例如，“不起作用”，“基准测试结果”和“没有问题”）。 在[5]中，Cardie等人讨论了面向意见的信息提取。 他们的目标是创建意见的摘要表示，以执行问题回答。 他们建议使用面向意见的“情景模板”作为文件或一组文件中表达的观点的概要表示。 我们的任务是不同的。 我们的目标是识别产品功能和用户对这些功能的意见，以自动生成摘要。 此外，我们的摘要生成中不使用任何模板。<br>我们的工作也与主观体裁分类，情感分类，文本摘要和术语发现有关但不同。 我们在下面讨论它们。</p>
+<h2 id="2-1-主观体裁分类"><a href="#2-1-主观体裁分类" class="headerlink" title="2.1 主观体裁分类"></a>2.1 主观体裁分类</h2><p>类型分类将文本分类为不同的风格，例如“编辑”，“小说”，“新闻”，“诗”等。尽管某些类型分类技术可以识别表达意见的文档[23,24,14]，但它们并不 判断意见是积极的还是消极的。 在我们的工作中，我们需要确定意见是积极的还是消极的，并在句子层面而不是在文件层面进行意见分类。<br>一个更密切相关的工作是[17]，其中作者调查句子主观性分类，并得出结论，句子中形容词的存在和类型表明该句子是主观的还是客观的。 然而，他们的工作并没有解决我们确定那些主观句子的语义方向的具体任务。 他们也没有找到表达意见的特征。</p>
+<h2 id="2-2-情绪分类"><a href="#2-2-情绪分类" class="headerlink" title="2.2 情绪分类"></a>2.2 情绪分类</h2><p>Hearst [18]和Sack [35]关于整个文档基于情感的分类的作品使用了受认知语言学启发的模型。 Das和Chen [8]使用手工制作的词典结合几种评分方法对投资者公告中的股票发布进行分类。 Huettner和Subasic [20]也手动构建判别词词典并使用模糊逻辑对情绪进行分类。 Tong [41]生成情绪时间表。它跟踪有关电影的在线讨论，并显示一段时间内正面和负面情绪信息的数量。通过寻找指示作者对电影的情绪的特定短语来对消息进行分类（例如，“伟大的表演”，“精彩的视觉效果”，“不均匀的编辑”）。每个短语必须手动添加到特殊词典并手动标记为指示正面或负面情绪。词典是依赖于域的（例如，电影），并且必须为每个新域重建。相反，在我们的工作中，我们只手动创建一个标有正面或负面标签的种子形容词的小列表。我们的种子形容词列表也是域独立的。提出了一种有效的技术来使用WordNet增加该列表。<br>Turney在[42]中的工作应用了一种特定的无监督学习技术，该技术基于文档短语和“优秀”和“差”之间的相互信息，其中互信息是使用搜索引擎收集的统计数据计算的。 庞等人。 [33]研究了几种用于电影评论的情感分类的监督机器学习方法，并得出结论：机器学习技术优于基于人类标记特征的方法，尽管现有方法都不能以合理的准确度处理情感分类。 我们的工作不同于这些关于情感分类的工作，因为我们在句子层面进行分类，同时确定每个文档的情绪。 他们也没有找到表达意见的特征，这在实践中非常重要。</p>
+<h2 id="2-3-文本摘要"><a href="#2-3-文本摘要" class="headerlink" title="2.3 文本摘要"></a>2.3 文本摘要</h2><p>现有的文本摘要技术主要属于两个类别之一：模板实例化和段落提取。 前框架的工作包括[10,39]。 他们强调识别和提取文档中的某些核心实体和事实，这些实体和事实都打包在模板中。 该框架需要背景知识才能将模板实例化到适当的细节级别。 因此，它不是域或类型独立[37,38]。 这与我们的工作不同，因为我们的技术不填充任何模板并且与域无关。<br>段落提取框架[例如，32,25,36]识别文本的某些片段（通常是句子），其最能代表文档的内容。 我们的工作不同之处在于我们不提取具有代表性的句子，而是识别和提取那些特定的产品特征以及与之相关的观点。<br>Boguraev和Kennedy [2]建议在文档中找到一些非常突出的表达，对象或事件，并使用它们来帮助总结文档。 我们的工作再次不同，因为我们在一组客户评论中发现所有产品功能，无论它们是否突出。 因此，我们的摘要不是传统的文本摘要。<br>大多数关于文本摘要的现有工作都集中在单个文档上。 一些研究人员还研究了涵盖类似信息的多个文档的摘要。 他们的主要目的是总结这些文件中信息内容的异同[27]。 我们的工作是相关的，但却完全不同，因为我们的目标是找到多个评论中讨论的关键特征。 我们不总结评论的相似点和不同点。</p>
+<h2 id="2-4-术语差债"><a href="#2-4-术语差债" class="headerlink" title="2.4 术语差债"></a>2.4 术语差债</h2><p>在术语发现中，基本上有两种用于在语料库中发现术语的技术：依赖于术语的句法描述的符号方法，即名词短语，以及利用构成术语的词往往彼此接近的事实的统计方法。 并重新出现[21,22,7,6]。 然而，使用名词短语倾向于产生太多非术语（低精度），而使用重复出现的短语错过了许多低频术语，带有变体的术语和仅带有一个词的术语。 我们基于关联挖掘的技术没有这些问题，我们也可以通过利用我们只对用户表达意见的功能感兴趣的事实来发现不常见的特征。</p>
+<hr>
+<h1 id="3-推荐的技术"><a href="#3-推荐的技术" class="headerlink" title="3 推荐的技术"></a>3 推荐的技术</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/18/7.18-函数/" rel="next" title="7.18-函数（编辑中）">
+                <i class="fa fa-chevron-left"></i> 7.18-函数（编辑中）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">左一鸣</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-介绍"><span class="nav-number">2.</span> <span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-相关工作"><span class="nav-number">3.</span> <span class="nav-text">2 相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-主观体裁分类"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 主观体裁分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-情绪分类"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 情绪分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-文本摘要"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 文本摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-术语差债"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 术语差债</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-推荐的技术"><span class="nav-number">4.</span> <span class="nav-text">3 推荐的技术</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+    <script src="/live2d-widget/autoload.js"></script>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左一鸣</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://mingo.pro">zym的MacBook pro</a> 强力驱动</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
