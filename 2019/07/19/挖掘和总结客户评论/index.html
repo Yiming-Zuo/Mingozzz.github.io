@@ -90,12 +90,14 @@
 <meta property="og:url" content="http://yoursite.com/2019/07/19/挖掘和总结客户评论/index.html">
 <meta property="og:site_name" content="Mingozzz&#39; blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/19/挖掘和总结客户评论/![](http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg">
 <meta property="og:image" content="http://qny.zuoyiming.com/2019-07-19-15635206799145.jpg">
-<meta property="og:updated_time" content="2019-07-19T08:07:47.424Z">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-20-15636082379701.jpg">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-20-15636094807050.jpg">
+<meta property="og:updated_time" content="2019-07-20T07:58:31.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mining and Summarizing Customer Reviews（编辑中）">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/19/挖掘和总结客户评论/![](http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg">
+<meta name="twitter:image" content="http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg">
 
 
 
@@ -387,7 +389,7 @@
       
 
       
-        <p><img src="![](http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg" alt><br><a id="more"></a></p>
+        <p><img src="http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg" alt><br><a id="more"></a></p>
 <p>挖掘和总结客户评论</p>
 <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>在网上销售产品的商家经常要求他们的客户审查他们购买的产品和相关服务。随着电子商务变得越来越流行，产品接收的客户评论数量迅速增长。对于受欢迎的产品，评论数量可以是数百甚至数千。这使得潜在客户难以阅读它们以便就是否购买产品做出明智的决定。这也使得产品制造商难以跟踪并管理客户意见。对于制造商而言，存在额外的困难，因为许多商家可能销售相同的产品，制造商通常生产多种产品。在本研究中，我们的目标是挖掘并总结产品的所有客户评论。此摘要任务与传统的文本摘要不同，因为我们仅挖掘客户表达其意见的产品的功能以及意见是积极的还是消极的。我们不会通过选择子集或重写评论中的一些原始句子来总结评论，以捕获经典文本摘要中的要点。我们的任务分三步进行：1.挖掘客户评论过的产品功能; 2.在每次审查中确定意见句子，并确定每个意见判决是正面还是负面; 3.总结结果。本文提出了几种执行这些任务的新技术。我们使用在线销售的许多产品的评论的实验结果证明了这些技术的有效性。<br>关键词：文本挖掘，情感分类，总结，评论。</p>
 <hr>
@@ -397,9 +399,11 @@
 <h2 id="2-1-主观体裁分类"><a href="#2-1-主观体裁分类" class="headerlink" title="2.1 主观体裁分类"></a>2.1 主观体裁分类</h2><p>类型分类将文本分类为不同的风格，例如“编辑”，“小说”，“新闻”，“诗”等。尽管某些类型分类技术可以识别表达意见的文档[23,24,14]，但它们并不 判断意见是积极的还是消极的。 在我们的工作中，我们需要确定意见是积极的还是消极的，并在句子层面而不是在文件层面进行意见分类。<br>一个更密切相关的工作是[17]，其中作者调查句子主观性分类，并得出结论，句子中形容词的存在和类型表明该句子是主观的还是客观的。 然而，他们的工作并没有解决我们确定那些主观句子的语义方向的具体任务。 他们也没有找到表达意见的特征。</p>
 <h2 id="2-2-情绪分类"><a href="#2-2-情绪分类" class="headerlink" title="2.2 情绪分类"></a>2.2 情绪分类</h2><p>Hearst [18]和Sack [35]关于整个文档基于情感的分类的作品使用了受认知语言学启发的模型。 Das和Chen [8]使用手工制作的词典结合几种评分方法对投资者公告中的股票发布进行分类。 Huettner和Subasic [20]也手动构建判别词词典并使用模糊逻辑对情绪进行分类。 Tong [41]生成情绪时间表。它跟踪有关电影的在线讨论，并显示一段时间内正面和负面情绪信息的数量。通过寻找指示作者对电影的情绪的特定短语来对消息进行分类（例如，“伟大的表演”，“精彩的视觉效果”，“不均匀的编辑”）。每个短语必须手动添加到特殊词典并手动标记为指示正面或负面情绪。词典是依赖于域的（例如，电影），并且必须为每个新域重建。相反，在我们的工作中，我们只手动创建一个标有正面或负面标签的种子形容词的小列表。我们的种子形容词列表也是域独立的。提出了一种有效的技术来使用WordNet增加该列表。<br>Turney在[42]中的工作应用了一种特定的无监督学习技术，该技术基于文档短语和“优秀”和“差”之间的相互信息，其中互信息是使用搜索引擎收集的统计数据计算的。 庞等人。 [33]研究了几种用于电影评论的情感分类的监督机器学习方法，并得出结论：机器学习技术优于基于人类标记特征的方法，尽管现有方法都不能以合理的准确度处理情感分类。 我们的工作不同于这些关于情感分类的工作，因为我们在句子层面进行分类，同时确定每个文档的情绪。 他们也没有找到表达意见的特征，这在实践中非常重要。</p>
 <h2 id="2-3-文本摘要"><a href="#2-3-文本摘要" class="headerlink" title="2.3 文本摘要"></a>2.3 文本摘要</h2><p>现有的文本摘要技术主要属于两个类别之一：模板实例化和段落提取。 前框架的工作包括[10,39]。 他们强调识别和提取文档中的某些核心实体和事实，这些实体和事实都打包在模板中。 该框架需要背景知识才能将模板实例化到适当的细节级别。 因此，它不是域或类型独立[37,38]。 这与我们的工作不同，因为我们的技术不填充任何模板并且与域无关。<br>段落提取框架[例如，32,25,36]识别文本的某些片段（通常是句子），其最能代表文档的内容。 我们的工作不同之处在于我们不提取具有代表性的句子，而是识别和提取那些特定的产品特征以及与之相关的观点。<br>Boguraev和Kennedy [2]建议在文档中找到一些非常突出的表达，对象或事件，并使用它们来帮助总结文档。 我们的工作再次不同，因为我们在一组客户评论中发现所有产品功能，无论它们是否突出。 因此，我们的摘要不是传统的文本摘要。<br>大多数关于文本摘要的现有工作都集中在单个文档上。 一些研究人员还研究了涵盖类似信息的多个文档的摘要。 他们的主要目的是总结这些文件中信息内容的异同[27]。 我们的工作是相关的，但却完全不同，因为我们的目标是找到多个评论中讨论的关键特征。 我们不总结评论的相似点和不同点。</p>
-<h2 id="2-4-术语差债"><a href="#2-4-术语差债" class="headerlink" title="2.4 术语差债"></a>2.4 术语差债</h2><p>在术语发现中，基本上有两种用于在语料库中发现术语的技术：依赖于术语的句法描述的符号方法，即名词短语，以及利用构成术语的词往往彼此接近的事实的统计方法。 并重新出现[21,22,7,6]。 然而，使用名词短语倾向于产生太多非术语（低精度），而使用重复出现的短语错过了许多低频术语，带有变体的术语和仅带有一个词的术语。 我们基于关联挖掘的技术没有这些问题，我们也可以通过利用我们只对用户表达意见的功能感兴趣的事实来发现不常见的特征。</p>
+<h2 id="2-4-术语查找"><a href="#2-4-术语查找" class="headerlink" title="2.4 术语查找"></a>2.4 术语查找</h2><p>在术语发现中，基本上有两种用于在语料库中发现术语的技术：依赖于术语的句法描述的符号方法，即名词短语，以及利用构成术语的词往往彼此接近的事实的统计方法。 并重新出现[21,22,7,6]。 然而，使用名词短语倾向于产生太多非术语（低精度），而使用重复出现的短语错过了许多低频术语，带有变体的术语和仅带有一个词的术语。 我们基于关联挖掘的技术没有这些问题，我们也可以通过利用我们只对用户表达意见的功能感兴趣的事实来发现不常见的特征。</p>
 <hr>
-<h1 id="3-推荐的技术"><a href="#3-推荐的技术" class="headerlink" title="3 推荐的技术"></a>3 推荐的技术</h1>
+<h1 id="3-推荐的技术"><a href="#3-推荐的技术" class="headerlink" title="3 推荐的技术"></a>3 推荐的技术</h1><p>图2给出了我们的意见摘要系统的架构概述。<br><img src="http://qny.zuoyiming.com/2019-07-20-15636082379701.jpg" alt><br>图2：基于意见的特征摘要<br>基于特征的意见摘要系统的输入是产品名称和产品评论的入口网页。 输出是评论摘要，如引言部分所示。<br>系统通过三个主要步骤（如前所述）生成摘要：（1）挖掘客户评论的产品功能; （2）在每次审查中确定意见句子，并确定每个意见判决是正面还是负面; （3）总结结果。 这些步骤在多个子步骤中执行。<br>根据输入，系统首先下载（或抓取）所有评论，并将它们放入评论数据库中。 然后它会发现许多人表达了他们意见的“热门”（或频繁）功能。 之后，使用产生的频繁特征提取意见词，并在WordNet的帮助下识别意见词的语义方向。 使用提取的意见词，系统然后找到那些不常见的特征。 在最后两个步骤中，确定每个意见句的方向并产生最终摘要。 请注意，POS标记是来自自然语言处理的词性标注[28]，这有助于我们找到意见特征。 下面，我们依次讨论每个子步骤。</p>
+<h2 id="词性标注（POS）"><a href="#词性标注（POS）" class="headerlink" title="词性标注（POS）"></a>词性标注（POS）</h2><p>产品特征通常是评论句子中的名词或名词短语。 因此，词性标注是至关重要的。 我们使用NLProcessor语言解析器[31]来解析每个评论，将文本拆分成句子，并为每个单词生成词性标签（无论单词是名词，动词，形容词等）。 该过程还识别简单的名词和动词组（句法分块）。 以下显示了带有POS标签的句子。<br><img src="http://qny.zuoyiming.com/2019-07-20-15636094807050.jpg" alt><br>NLProcessor生成XML输出。 例如，<w c="NN">表示名词，<ng>表示名词组/名词短语。</ng></w></p>
+
       
     </div>
     
@@ -423,7 +427,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/19/7.18-函数/" rel="next" title="7.18-函数">
+              <a href="/2019/07/19/7.19-函数/" rel="next" title="7.18-函数">
                 <i class="fa fa-chevron-left"></i> 7.18-函数
               </a>
             
@@ -432,6 +436,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/20/7.20-高级特性/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -508,7 +516,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -554,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-介绍"><span class="nav-number">2.</span> <span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-相关工作"><span class="nav-number">3.</span> <span class="nav-text">2 相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-主观体裁分类"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 主观体裁分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-情绪分类"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 情绪分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-文本摘要"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 文本摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-术语差债"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 术语差债</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-推荐的技术"><span class="nav-number">4.</span> <span class="nav-text">3 推荐的技术</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-介绍"><span class="nav-number">2.</span> <span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-相关工作"><span class="nav-number">3.</span> <span class="nav-text">2 相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-主观体裁分类"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 主观体裁分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-情绪分类"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 情绪分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-文本摘要"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 文本摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-术语查找"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 术语查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-推荐的技术"><span class="nav-number">4.</span> <span class="nav-text">3 推荐的技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词性标注（POS）"><span class="nav-number">4.1.</span> <span class="nav-text">词性标注（POS）</span></a></li></ol></li></ol></div>
             
 
           </div>
