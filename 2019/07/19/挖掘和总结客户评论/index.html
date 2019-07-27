@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="数据挖掘,">
 
 
 
@@ -85,8 +85,9 @@
 
 
 
+<meta name="keywords" content="数据挖掘">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mining and Summarizing Customer Reviews（编辑中）">
+<meta property="og:title" content="Mining and Summarizing Customer Reviews">
 <meta property="og:url" content="http://yoursite.com/2019/07/19/挖掘和总结客户评论/index.html">
 <meta property="og:site_name" content="Mingozzz&#39; blog">
 <meta property="og:locale" content="zh-Hans">
@@ -94,9 +95,14 @@
 <meta property="og:image" content="http://qny.zuoyiming.com/2019-07-19-15635206799145.jpg">
 <meta property="og:image" content="http://qny.zuoyiming.com/2019-07-20-15636082379701.jpg">
 <meta property="og:image" content="http://qny.zuoyiming.com/2019-07-20-15636094807050.jpg">
-<meta property="og:updated_time" content="2019-07-20T07:58:31.533Z">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-23-15638439237452.jpg">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-23-15638444632803.jpg">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-23-15638446392402.jpg">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-23-15638447990722.jpg">
+<meta property="og:image" content="http://qny.zuoyiming.com/2019-07-23-15638449206640.jpg">
+<meta property="og:updated_time" content="2019-07-27T03:01:21.726Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mining and Summarizing Customer Reviews（编辑中）">
+<meta name="twitter:title" content="Mining and Summarizing Customer Reviews">
 <meta name="twitter:image" content="http://qny.zuoyiming.com/2019-07-19-15635232621002.jpg">
 
 
@@ -133,7 +139,7 @@
 
 
 
-  <title>Mining and Summarizing Customer Reviews（编辑中） | Mingozzz' blog</title>
+  <title>Mining and Summarizing Customer Reviews | Mingozzz' blog</title>
   
 
 
@@ -317,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mining and Summarizing Customer Reviews（编辑中）</h1>
+          <h1 class="post-title" itemprop="name headline">Mining and Summarizing Customer Reviews</h1>
         
 
         <div class="post-meta">
@@ -402,7 +408,17 @@
 <h2 id="2-4-术语查找"><a href="#2-4-术语查找" class="headerlink" title="2.4 术语查找"></a>2.4 术语查找</h2><p>在术语发现中，基本上有两种用于在语料库中发现术语的技术：依赖于术语的句法描述的符号方法，即名词短语，以及利用构成术语的词往往彼此接近的事实的统计方法。 并重新出现[21,22,7,6]。 然而，使用名词短语倾向于产生太多非术语（低精度），而使用重复出现的短语错过了许多低频术语，带有变体的术语和仅带有一个词的术语。 我们基于关联挖掘的技术没有这些问题，我们也可以通过利用我们只对用户表达意见的功能感兴趣的事实来发现不常见的特征。</p>
 <hr>
 <h1 id="3-推荐的技术"><a href="#3-推荐的技术" class="headerlink" title="3 推荐的技术"></a>3 推荐的技术</h1><p>图2给出了我们的意见摘要系统的架构概述。<br><img src="http://qny.zuoyiming.com/2019-07-20-15636082379701.jpg" alt><br>图2：基于意见的特征摘要<br>基于特征的意见摘要系统的输入是产品名称和产品评论的入口网页。 输出是评论摘要，如引言部分所示。<br>系统通过三个主要步骤（如前所述）生成摘要：（1）挖掘客户评论的产品功能; （2）在每次审查中确定意见句子，并确定每个意见判决是正面还是负面; （3）总结结果。 这些步骤在多个子步骤中执行。<br>根据输入，系统首先下载（或抓取）所有评论，并将它们放入评论数据库中。 然后它会发现许多人表达了他们意见的“热门”（或频繁）功能。 之后，使用产生的频繁特征提取意见词，并在WordNet的帮助下识别意见词的语义方向。 使用提取的意见词，系统然后找到那些不常见的特征。 在最后两个步骤中，确定每个意见句的方向并产生最终摘要。 请注意，POS标记是来自自然语言处理的词性标注[28]，这有助于我们找到意见特征。 下面，我们依次讨论每个子步骤。</p>
-<h2 id="词性标注（POS）"><a href="#词性标注（POS）" class="headerlink" title="词性标注（POS）"></a>词性标注（POS）</h2><p>产品特征通常是评论句子中的名词或名词短语。 因此，词性标注是至关重要的。 我们使用NLProcessor语言解析器[31]来解析每个评论，将文本拆分成句子，并为每个单词生成词性标签（无论单词是名词，动词，形容词等）。 该过程还识别简单的名词和动词组（句法分块）。 以下显示了带有POS标签的句子。<br><img src="http://qny.zuoyiming.com/2019-07-20-15636094807050.jpg" alt><br>NLProcessor生成XML输出。 例如，<w c="NN">表示名词，<ng>表示名词组/名词短语。</ng></w></p>
+<h2 id="词性标注（POS）"><a href="#词性标注（POS）" class="headerlink" title="词性标注（POS）"></a>词性标注（POS）</h2><p>产品特征通常是评论句子中的名词或名词短语。 因此，词性标注是至关重要的。 我们使用NLProcessor语言解析器[31]来解析每个评论，将文本拆分成句子，并为每个单词生成词性标签（无论单词是名词，动词，形容词等）。 该过程还识别简单的名词和动词组（句法分块）。 以下显示了带有POS标签的句子。<br><img src="http://qny.zuoyiming.com/2019-07-20-15636094807050.jpg" alt><br>NLProcessor生成XML输出。 例如，<w c="NN">表示名词，<ng>表示名词组/名词短语。<br>每个句子与句子中每个单词的POS标签信息一起保存在评论数据库中。 然后创建事务文件以在下一步中生成常用的特征。 在该文件中，每行包含来自一个句子的单词，其仅包括所识别的名词和句子的名词短语。 句子的其他组成部分不太可能是产品功能。 还执行一些单词预处理，包括删除停用词，词干和模糊匹配。 模糊匹配用于处理单词变体和拼写错误[19]。</ng></w></p>
+<h2 id="频繁特征识别"><a href="#频繁特征识别" class="headerlink" title="频繁特征识别"></a>频繁特征识别</h2><p>此子步骤标识了许多人表达其意见的产品功能。 在讨论频繁的特征识别之前，我们首先从一些评论中给出一些例句来描述我们将要处理的意见类型。 由于我们的系统旨在找到人们喜欢和不喜欢的特定产品，如何找到人们谈论的产品功能是至关重要的一步。 然而，由于自然语言理解的困难，某些类型的句子很难处理。 让我们从数码相机的评论中看到一个简单而难以理解的句子：<br>“The pictures are very clear.”<br>在这句话中，用户对相机的画质感到满意，画面是用户谈论的特征。 虽然在句子中明确提到了这个句子的特征，但是一些特征是隐含的并且很难找到。 例如，<br>“While light, it will not easily fit in pockets.”<br>该客户正在谈论相机的尺寸，但单词大小不会出现在句子中。 在这项工作中，我们专注于寻找在评论中明确显示为名词或名词短语的特征。 我们将会在未来的工作中寻找隐含的特征。<br>在这里，我们专注于寻找频繁的特征，即许多客户谈论的那些特征（发现不常见的特征将在后面讨论）。 为此，我们使用关联挖掘[1]来查找所有频繁项集。 在我们的上下文中，项集只是一组在一些句子中一起出现的单词或短语。<br>使用关联挖掘的主要原因是由于以下观察。 客户评论通常包含许多与产品功能无直接关系的内容。 不同的客户通常有不同的诉说。 但是，当他们评论产品功能时，他们使用的词语会聚合。 因此，使用关联挖掘来查找频繁项目集是合适的，因为那些频繁项目集可能是产品特征。 那些不常见的名词/名词短语很可能是非产品特征。<br>我们运行关联矿工CBA [26]，它是基于在Apriori算法[1]设定在先前步骤中产生的名词/名词短语的事务。 每个产生的频繁项目集都是可能的特征。 在我们的工作中，如果项目集出现在审核语句的1％以上（最小支持）中，我们将其定义为频繁。 生成的频繁项集在本文中也称为候选频繁特征。<br>但是，并非所有由关联挖掘生成的候选频繁特征都是真实特征。 使用两种类型的修剪来移除那些不太可能的特征。<br>紧凑修剪：<br>此方法检查包含至少两个单词的功能，我们将其称为功能短语，并删除那些可能毫无意义的功能。<br>关联挖掘算法不考虑句子中项目（或单词）的位置。 但是，在一个句子中，以特定顺序一起出现的单词更可能是有意义的短语。 因此，关联挖掘生成的一些常用特征短语可能不是真正的特征。 紧凑性修剪旨在修剪那些单词不按特定顺序出现的候选特征。 有关紧凑性的详细定义以及修剪程序，请参见[19]。<br>冗余修剪：<br>在此步骤中，我们将重点关注删除包含单个单词的冗余功能。 为了描述冗余特征的含义，我们使用p-support（纯支持）的概念。 特征ftr的p支持是ftr作为名词或名词短语出现的句子数，并且这些句子必须不包含作为ftr超集的特征短语。<br>我们使用最小p支持值来修剪这些冗余功能。 如果某个要素的p支持低于最小psupport（在我们的系统中，我们将其设置为3）并且该要素是另一个要素短语的子集（这表明该功能本身可能不是很有趣），则会对其进行修剪。 例如，生命本身不是一个有用的功能，而电池寿命是一个有意义的特征短语。 有关更多解释，请参见[19]。</p>
+<h2 id="3-3-意见词提取"><a href="#3-3-意见词提取" class="headerlink" title="3.3 意见词提取"></a>3.3 意见词提取</h2><p>我们现在确定意见词。 这些词主要用于表达主观意见。 显然，这与现有的区分用于表达主观意见的句子和客观描述某些事实信息的句子的工作有关[43]。 先前关于主观性的研究[44,4]已经与形容词的存在建立了积极的统计学显着相关性。 因此，形容词的存在对于预测句子是否是主观的，即表达意见是有用的。 本文使用形容词作为意见词。 我们还将意见单词提取限制为包含一个或多个产品功能的句子，因为我们只对客户对这些产品功能的看法感兴趣。 让我们首先定义一个意见句子。<br>Definition: opinion sentence<br>定义：意见句<br>如果一个句子包含一个或多个产品特征和一个或多个意见词，则该句子称为意见句子。<br>我们以下列方式提取意见词（图3）：<br><img src="http://qny.zuoyiming.com/2019-07-23-15638439237452.jpg" alt><br>对于评论数据库中的每个句子<br>if（它包含一个频繁的特征，提取所有形容词作为意见词）<br>对于句子中的每个功能<br>附近的形容词被记录为其有效意见。 / <em>附近的形容词是指相邻的形容词，它修饰了作为常用特征的名词/名词短语。</em>/<br>例如，可怕的是背带的有效观点：“背带很可怕并妨碍你需要访问的相机部分。”当我们预测意见句的方向时，有效的意见将是有用的。</p>
+<h2 id="3-4意见词的方向识别"><a href="#3-4意见词的方向识别" class="headerlink" title="3.4意见词的方向识别"></a>3.4意见词的方向识别</h2><p>对于每个观点词，我们需要确定其语义方向，这将用于预测每个意见句子的语义方向。 单词的语义方向指示单词偏离其语义组的范数的方向。 编码期望状态（例如，漂亮，令人敬畏）的词具有正方向，而表示不期望状态的词具有负方向（例如，令人失望）。 虽然取向适用于许多形容词，但也有那些没有取向的形容词（例如，外在的，数字化的）[17]。 在这项工作中，我们只对正面和负面的方向感兴趣。<br>不幸的是，词典和类似的来源，即WordNet [29]不包括每个单词的语义方向信息。 Hatzivassiloglou和McKeown [16]使用监督学习算法从连词约束推断出形容词的语义方向。虽然他们的方法实现了高精度，但它依赖于大的语料库，并且需要大量的手动标记的训练数据。在Turney的工作[42]中，短语的语义方向被计算为给定短语和单词“excellent”之间的互信息减去给定短语和单词“poor”之间的互信息。通过向搜索引擎发出查询并记录命中数来估计互信息。然而，论文[42]没有报告单个单词/短语的语义方向的结果。相反，它只给出评论的分类结果。我们在本文中没有使用这些技术，因为这两种工作都依赖于来自相当大的语料库的统计信息。他们的方法也效率低下。例如，在[42]中，对于每个单词或短语，需要Web搜索和返回结果的实质处理。<br>在这项研究中，我们通过利用WordNet [29]中的形容词同义词集和反义词集来预测形容词的语义方向，提出了一种简单而有效的方法。<br>在WordNet中，形容词被组织成双极聚类，如图4所示。快/慢的聚类由两个半聚类组成，一个用于快速感知，一个用于慢速感官。 每个半群由头部同义词组成，在这种情况下快速且反义词缓慢。 在头部同义词之后是卫星同义词，其表示与头部形容词的感觉类似的感觉。 另一半群由慢速/快速反向反义词对，然后是慢速感知的卫星同义词[12]。<br><img src="http://qny.zuoyiming.com/2019-07-23-15638444632803.jpg" alt><br>一般来说，形容词与其同义词和反义词具有相同的取向和反义词。 我们用这个想法来预测形容词的方向。 为此，搜索给定形容词和反义词集的同义词集。 如果同义词/反义词具有已知的方向，则可以相应地设置给定形容词的方向。 由于形容词的synset始终包含链接到head synset的意义，因此搜索范围相当大。 如果有足够的种子形容词具有已知的方向，我们几乎可以预测评论集合中所有形容词的方向。<br>因此，我们的策略是使用一组种子形容词，我们知道它们的方向，然后通过在WordNet中搜索来增长这一组。 为了拥有相当广泛的形容词，我们首先手动提出一组非常常见的形容词（在我们的实验中，我们使用30个）作为种子列表，例如： 正面形容词：伟大的，奇妙的，美好的，冷酷的和消极的形容词：坏，沉闷。 然后我们求助于WordNet来预测意见词列表中所有形容词的方向。 一旦预测了形容词的方向，就会将其添加到种子列表中。 因此，列表在此过程中增长。<br>预测意见列表中所有形容词的语义方向的完整过程如图5所示。<br>过程OrientationPrediction采用形容词种子列表和一组需要确定其方向的意见词。它迭代地调用过程OrientationSearch，直到没有新的意见词被添加到种子列表中。 每次将带有方向的形容词添加到种子列表中时，都会更新种子列表; 因此，为了利用新添加的信息，必须重复调用OrientationSearch。<br><img src="http://qny.zuoyiming.com/2019-07-23-15638446392402.jpg" alt><br>过程OrientationSearch在WordNet和种子列表中搜索每个目标形容词，以预测其方向（第3行到第11行）。 在第5行中，它搜索WordNet中目标形容词的synset，并检查是否有任何同义词已知方向。 如果是，则将目标方向设置为与同义词相同的方向（第6行），并将目标形容词连同方向插入种子列表（第7行）。 否则，该函数继续搜索WordNet中目标词的反义词集，并检查是否有任何反义词已知方向（第8行）。 如果是，则将目标方向设置为与反义词相反（第9行），并将具有其方向的目标形容词插入种子列表（第10行）。 如果目标词的同义词和反义词都没有已知的方向，则该函数仅对下一个形容词继续相同的过程，因为可以在稍后调用具有更新的种子列表的过程中找到该词的方向。<br>对于WordNet无法识别的形容词，它们会被丢弃，因为它们可能不是有效的单词。 对于那些我们找不到方向的人，他们也将从意见单词列表中删除，并且将通知用户注意。 如果用户认为该单词是意见单词并且知道其情绪，则他/她可以更新种子列表。 在我们的实验中，没有用户参与（删除了那些删除的意见单词）。 对于形容词的同义词/反义词具有不同的已知语义方向的情况，我们使用第一个找到的方向作为给定形容词的方向。</p>
+<h2 id="3-5-不常见的特征识别"><a href="#3-5-不常见的特征识别" class="headerlink" title="3.5 不常见的特征识别"></a>3.5 不常见的特征识别</h2><p>频繁的功能是人们对给定产品评论最多的“热门”功能。 但是，有一些功能只有少数人谈论过。 这些功能对于一些潜在客户和产品制造商也很有趣。 问题是如何提取这些不常见的功能（关联挖掘无法识别这些功能）？ 考虑以下句子：<br>“The pictures are absolutely amazing.”<br>“The software that comes with it is amazing.”<br>句子1和2分享相同的观点词，令人惊叹但描述不同的特征：句子1是关于图片，句子2是关于软件。 由于一个形容词可用于描述不同的对象，我们可以使用意见词来查找使用关联挖掘在频繁的特征生成步骤中找不到的特征。<br>我们使用图6中的过程提取不常见的特征：<br><img src="http://qny.zuoyiming.com/2019-07-23-15638447990722.jpg" alt><br>我们使用最近的名词/名词短语作为意见词修饰的名词/名词短语，因为这是大多数时间发生的事情。 这种简单的启发式似乎在实践中运作良好。<br>使用意见词的罕见特征识别的问题在于它还可以找到与给定产品无关的名词/名词短语。 这样做的原因是人们可以使用常见的形容词来描述很多对象，包括我们想要的有趣特征和不相关的特征。 然而，这不是一个严重的问题，因为与频繁特征的数量相比，不频繁特征的数量很小。 它们占我们实验结果中获得的特征总数的约15-20％。 生成不常见的功能以实现完整性。 此外，频繁的功能比不常见的功能更重要。 由于我们根据其p支持对功能进行排名，因此这些错误的不常见功能将排名非常低，因此不会影响大多数用户。</p>
+<h2 id="3-6-预测意见句的方向"><a href="#3-6-预测意见句的方向" class="headerlink" title="3.6 预测意见句的方向"></a>3.6 预测意见句的方向</h2><p>我们现在达到预测意见句的方向的步骤，即正面或负面。 一般来说，我们使用句子中意见词的主导方向来确定句子的方向。 也就是说，如果积极/消极意见占优势，则意见判决被视为正面/负面意见。 在句子中存在相同数量的正面和负面意见词的情况下，我们使用有效意见的平均方向或先前意见句的方向来预测方向（回想一下，有效意见是最接近意见的词。 意见句中的特征）。 这是一种有效的方法，正如我们的实验结果所示。 详细过程如图7所示。<br><img src="http://qny.zuoyiming.com/2019-07-23-15638449206640.jpg" alt><br>过程SentenceOrietation处理三种情况，用于预测意见句子的语义方向：<br>1.用户喜欢或不喜欢一个句子中的大部分或全部特征。 意见词主要是积极的或消极的，例如，有两个积极的意见词，好的和特殊的“总体来说这是一个很好的相机，具有非常好的画面清晰度和特殊的近距离拍摄能力。”<br>2.用户喜欢或不喜欢一个句子中的大部分功能，但是有相同数量的正面和负面意见词，例如“自动和手动以及电影模式都非常容易使用，但软件不是 直观的。“虽然用户喜欢两个功能而不喜欢一个功能，但有一个积极的意见容易，一个负面意见不直观。<br>3.所有其他案件。<br>对于案例1，可以容易地识别主导方向（第一个过程中的第5到第10行，SentenceOrietation）。 这是人们发表意见时最常见的情况。 对于案例2，我们使用特征的有效意见的平均方向（第12至18行）。 假设有效意见是特征的最相关意见。 对于案例3，我们将意见句子的方向设置为与先前意见句子的方向相同（第19行）。 我们使用上下文信息来预测句子方向，因为在大多数情况下，人们在一个文本片段中一起表达他们的正面/负面意见，即几个连续的句子。<br>对于包含but子句的子句（子句，但以等等开头），表示该子句中的特征的情感变化，我们首先使用该子句中的有效意见来确定特征的方向。 如果条款中没有出现意见，将使用相反的方向。<br>请注意，在过程wordOrientation中，我们不是简单地将意见词的意义词的语义方向作为其在特定句子中的方向。 我们还考虑是否存在诸如“不”，“不是”，“尚未”之类的否定词，紧紧围绕意见词出现。 如果是这样，则句子的意见取向与其原始取向相反（第4和第5行）。 我们的意思是，否定词与意见词之间的单词距离不应超过阈值（在我们的实验中，我们将其设置为5）。 这种简单的方法处理诸如“相机不易使用”之类的句子，以及“在侧面看到小变焦标志会更好”。 在大多数情况下，这种方法非常有效。</p>
+<h2 id="3-7-摘要生成"><a href="#3-7-摘要生成" class="headerlink" title="3.7 摘要生成"></a>3.7 摘要生成</h2><p>完成上述所有步骤后，我们就可以生成最终的基于功能的审核摘要，该摘要非常简单，包含以下步骤：</p>
+<ul>
+<li>对于每个发现的特征，根据意见句子的方向将相关的意见句子分为正面和负面类别。 计算计数以显示有多少评论给出该特征的正面/负面意见。</li>
+<li>所有功能都根据其在评论中出现的频率进行排名。 功能短语出现在单个单词功能之前，因为短语通常对用户更有趣。 其他类型的排名也是可能的。 例如，我们还可以根据表达积极或消极意见的评论数量对特征进行排名。<br>以下显示了数码相机功能“图片”的示例摘要。 注意，可以使用超链接隐藏各个意见句子（及其相应的评论，这里未示出），以使用户能够容易地看到摘要的全局视图。</li>
+</ul>
 
       
     </div>
@@ -418,6 +434,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数据挖掘/" rel="tag"># 数据挖掘</a>
+          
+        </div>
+      
 
       
       
@@ -427,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/19/7.19-函数/" rel="next" title="7.18-函数">
-                <i class="fa fa-chevron-left"></i> 7.18-函数
+              <a href="/2019/07/19/7.19-函数/" rel="next" title="7.19-函数">
+                <i class="fa fa-chevron-left"></i> 7.19-函数
               </a>
             
           </div>
@@ -437,8 +459,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/20/7.20-高级特性/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/28/7.20-高级特性/" rel="prev" title="7.27-高级特性">
+                7.27-高级特性 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -534,6 +556,15 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
 
           </nav>
 
@@ -562,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-介绍"><span class="nav-number">2.</span> <span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-相关工作"><span class="nav-number">3.</span> <span class="nav-text">2 相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-主观体裁分类"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 主观体裁分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-情绪分类"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 情绪分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-文本摘要"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 文本摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-术语查找"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 术语查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-推荐的技术"><span class="nav-number">4.</span> <span class="nav-text">3 推荐的技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词性标注（POS）"><span class="nav-number">4.1.</span> <span class="nav-text">词性标注（POS）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-介绍"><span class="nav-number">2.</span> <span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-相关工作"><span class="nav-number">3.</span> <span class="nav-text">2 相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-主观体裁分类"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 主观体裁分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-情绪分类"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 情绪分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-文本摘要"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 文本摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-术语查找"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 术语查找</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-推荐的技术"><span class="nav-number">4.</span> <span class="nav-text">3 推荐的技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词性标注（POS）"><span class="nav-number">4.1.</span> <span class="nav-text">词性标注（POS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#频繁特征识别"><span class="nav-number">4.2.</span> <span class="nav-text">频繁特征识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-意见词提取"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 意见词提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4意见词的方向识别"><span class="nav-number">4.4.</span> <span class="nav-text">3.4意见词的方向识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-不常见的特征识别"><span class="nav-number">4.5.</span> <span class="nav-text">3.5 不常见的特征识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-预测意见句的方向"><span class="nav-number">4.6.</span> <span class="nav-text">3.6 预测意见句的方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-摘要生成"><span class="nav-number">4.7.</span> <span class="nav-text">3.7 摘要生成</span></a></li></ol></li></ol></div>
             
 
           </div>
