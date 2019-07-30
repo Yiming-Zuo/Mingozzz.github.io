@@ -89,7 +89,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 16.Unsupervised Learning: Deep Auto-encoder----深度自动编码器		">
 <meta property="og:url" content="http://yoursite.com/2019/04/23/16.Deep Auto-encoder深度自动编码器/index.html">
-<meta property="og:site_name" content="Mingozzz&#39; blog">
+<meta property="og:site_name" content="大米之家">
 <meta property="og:description" content="Auto-encoder Auto-encoder使用神经网络进行降维。由于这里是无监督学习，因此encoder的训练过程需要采用decoder同时进行训练，与PCA的过程类似，首先通过输入的图片，乘以矩阵W，得到降维后的数据，然后对于降维数据乘以前述矩阵的转置，可以得到预测的输出图片。  目前网络的对称性并不是必须的。为了防止NN只是单纯记住输入的特征，可以在输入加上噪声，然后输出的目标是未加噪">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://zuoyiming.com/wp-content/uploads/2019/04/image-197-1024x676.jpg">
@@ -110,7 +110,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -136,7 +136,7 @@
 
 
 
-  <title> 16.Unsupervised Learning: Deep Auto-encoder----深度自动编码器		 | Mingozzz' blog</title>
+  <title> 16.Unsupervised Learning: Deep Auto-encoder----深度自动编码器		 | 大米之家</title>
   
 
 
@@ -166,7 +166,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Mingozzz' blog</span>
+        <span class="site-title">大米之家</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -306,13 +306,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/16.Deep Auto-encoder深度自动编码器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="左一鸣">
+      <meta itemprop="name" content="最爱恰米饭">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mingozzz' blog">
+      <meta itemprop="name" content="大米之家">
     </span>
 
     
@@ -502,8 +502,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">左一鸣</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="最爱恰米饭">
+            
+              <p class="site-author-name" itemprop="name">最爱恰米饭</p>
+              <p class="site-description motion-element" itemprop="description">你看见过我的小熊吗？</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -568,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-encoder"><span class="nav-number">1.</span> <span class="nav-text">Auto-encoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-encoder的用处"><span class="nav-number">2.</span> <span class="nav-text">Auto-encoder的用处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNN-Unpooling"><span class="nav-number">3.</span> <span class="nav-text">CNN -Unpooling</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-encoder"><span class="nav-text">Auto-encoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-encoder的用处"><span class="nav-text">Auto-encoder的用处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNN-Unpooling"><span class="nav-text">CNN -Unpooling</span></a></li></ol></div>
             
 
           </div>
@@ -576,6 +578,11 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -592,10 +599,12 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">左一鸣</span>
+  <span class="author" itemprop="copyrightHolder">最爱恰米饭</span>
+
 
   
 </div>
+
 
 
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://mingo.pro">zym的MacBook pro</a> 强力驱动</div>
@@ -615,11 +624,6 @@
       </div>
     </footer>
     
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
     
     
