@@ -86,14 +86,14 @@
 
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="python实例001：数字组合">
-<meta property="og:url" content="http://yoursite.com/2019/07/29/7.29-python实例1/index.html">
+<meta property="og:title" content="7.30-模块">
+<meta property="og:url" content="http://yoursite.com/2019/07/30/7.30-模块/index.html">
 <meta property="og:site_name" content="Mingozzz&#39; blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png">
-<meta property="og:updated_time" content="2019-07-30T01:27:28.424Z">
+<meta property="og:updated_time" content="2019-07-30T08:46:20.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python实例001：数字组合">
+<meta name="twitter:title" content="7.30-模块">
 <meta name="twitter:image" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png">
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/29/7.29-python实例1/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/30/7.30-模块/">
 
 
 
 
 
-  <title>python实例001：数字组合 | Mingozzz' blog</title>
+  <title>7.30-模块 | Mingozzz' blog</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/7.29-python实例1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/7.30-模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="左一鸣">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python实例001：数字组合</h1>
+          <h1 class="post-title" itemprop="name headline">7.30-模块</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T14:04:45+08:00">
-                2019-07-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T16:46:16+08:00">
+                2019-07-30
               </time>
             
 
@@ -387,65 +387,28 @@
 
       
         <p><img src="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png" alt><br><a id="more"></a></p>
-<h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p>有四个数字：1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少？</p>
-<h1 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#19.7.29</span></span><br><span class="line"><span class="comment">#1</span></span><br><span class="line">total=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">if</span>((i!=j)<span class="keyword">and</span>(i!=k)<span class="keyword">and</span>(k!=j)):</span><br><span class="line">                print(i,j,k)</span><br><span class="line">                total+=<span class="number">1</span></span><br><span class="line">print(total)</span><br></pre></td></tr></table></figure>
-<pre><code>1 2 3
-1 2 4
-1 3 2
-1 3 4
-1 4 2
-1 4 3
-2 1 3
-2 1 4
-2 3 1
-2 3 4
-2 4 1
-2 4 3
-3 1 2
-3 1 4
-3 2 1
-3 2 4
-3 4 1
-3 4 2
-4 1 2
-4 1 3
-4 2 1
-4 2 3
-4 3 1
-4 3 2
-24
-</code></pre><h1 id="方法2：利用itertools中的permutations方法"><a href="#方法2：利用itertools中的permutations方法" class="headerlink" title="方法2：利用itertools中的permutations方法"></a>方法2：利用itertools中的permutations方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1 简易方法</span></span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line">l=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">sum2=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> itertools.permutations(l,<span class="number">3</span>):<span class="comment">#不需要list</span></span><br><span class="line">    print(i)</span><br><span class="line">    sum2+=<span class="number">1</span></span><br><span class="line">print(sum2)</span><br></pre></td></tr></table></figure>
-<pre><code>(1, 2, 3)
-(1, 2, 4)
-(1, 3, 2)
-(1, 3, 4)
-(1, 4, 2)
-(1, 4, 3)
-(2, 1, 3)
-(2, 1, 4)
-(2, 3, 1)
-(2, 3, 4)
-(2, 4, 1)
-(2, 4, 3)
-(3, 1, 2)
-(3, 1, 4)
-(3, 2, 1)
-(3, 2, 4)
-(3, 4, 1)
-(3, 4, 2)
-(4, 1, 2)
-(4, 1, 3)
-(4, 2, 1)
-(4, 2, 3)
-(4, 3, 1)
-(4, 3, 2)
-24
-</code></pre><h1 id="全排列函数combinations和permutations"><a href="#全排列函数combinations和permutations" class="headerlink" title="*全排列函数combinations和permutations"></a>*全排列函数combinations和permutations</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全排列函数combinations和permutations</span></span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line">s=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">l1=list(itertools.combinations(<span class="string">'abc'</span>,<span class="number">2</span>))<span class="comment">#combinations组合</span></span><br><span class="line">l2=list(itertools.permutations(<span class="string">'abc'</span>,<span class="number">2</span>))<span class="comment">#permutations排列</span></span><br><span class="line">l3=list(itertools.combinations(s,<span class="number">3</span>))<span class="comment">#返回的对象地址，转化为list</span></span><br><span class="line">l4=list(itertools.permutations(s,<span class="number">3</span>))</span><br><span class="line">print(l1)</span><br><span class="line">print(l2)</span><br><span class="line">print(l3)</span><br><span class="line">print(l4)</span><br></pre></td></tr></table></figure>
-<pre><code>[(&apos;a&apos;, &apos;b&apos;), (&apos;a&apos;, &apos;c&apos;), (&apos;b&apos;, &apos;c&apos;)]
-[(&apos;a&apos;, &apos;b&apos;), (&apos;a&apos;, &apos;c&apos;), (&apos;b&apos;, &apos;a&apos;), (&apos;b&apos;, &apos;c&apos;), (&apos;c&apos;, &apos;a&apos;), (&apos;c&apos;, &apos;b&apos;)]
-[(1, 2, 3)]
-[(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
-</code></pre>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><blockquote>
+<p>在Python中，一个.py文件称之为一个模块（Module）。<br>模块是一组python代码的集合，可以使用其他模块，也可以被其他模块使用<br>模块名命名规则：变量命名规范<br>包括python内置模块和第三方模块<br>避免函数名和变量名冲突，但是不要和内置函数名冲突（<a href="https://docs.python.org/3/library/functions.html" target="_blank" rel="noopener">python内置函数</a>）<br>检测系统中是否已经存在改模块：<code>import abc</code></p>
+</blockquote>
+<p>包：</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mycompany<span class="comment">#只要顶层的包名不与其他模块冲突，其下所有的模块都不会冲突</span></span><br><span class="line">├─ __init__.py<span class="comment">#必须存在才为包，可为空，模块名:mycompany</span></span><br><span class="line">├─ abc.py<span class="comment">#模块名变为:mycompany.abc</span></span><br><span class="line">└─ xyz.py</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多级层次包结构</span></span><br><span class="line">mycompany</span><br><span class="line"> ├─ web</span><br><span class="line"> │  ├─ __init__.py<span class="comment">#模块名:mycompany.web</span></span><br><span class="line"> │  ├─ utils.py<span class="comment">#模块名:mycompany.web.utils</span></span><br><span class="line"> │  └─ www.py<span class="comment">#模块名:mycompany.web.www</span></span><br><span class="line"> ├─ __init__.py</span><br><span class="line"> ├─ abc.py</span><br><span class="line"> └─ utils.py<span class="comment">#模块名:mycompany.ttils</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="使用模块"><a href="#使用模块" class="headerlink" title="使用模块"></a>使用模块</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用模块</span></span><br><span class="line"><span class="comment">#hello.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python3  #可以在Unix/Linux/Mac上运行</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-  #使用标准UTF-8编码</span></span><br><span class="line"></span><br><span class="line"><span class="string">'a test module'</span><span class="comment">#文档注释</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">'Zuo'</span><span class="comment">#作者</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    args = sys.argv<span class="comment">#argv函数</span></span><br><span class="line">    <span class="keyword">if</span> len(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">'Hello,world'</span>)</span><br><span class="line">    <span class="keyword">elif</span> len(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">'Hello,%s!'</span>%(args[<span class="number">1</span>]))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'Too many arguments!'</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:<span class="comment">#导入时不运行，本身运行时成立</span></span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+<pre><code>Too many arguments!
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ python3 hello.py</span><br><span class="line">Hello, world!</span><br><span class="line">$ python hello.py Michael</span><br><span class="line">Hello, Michael!</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#作用域</span></span><br><span class="line"><span class="comment">#通过_前缀实现函数、变量仅在模块内部使用，不能improt到其他模块</span></span><br><span class="line"><span class="comment">#外部不需要引用的函数全部定义为private，外部需引用的定义为public</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_private</span><span class="params">(name)</span>:</span><span class="comment">#不能被外部import</span></span><br><span class="line">    <span class="keyword">return</span>(<span class="string">'hello,%s'</span> %(name))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greeting</span><span class="params">(name)</span>:</span><span class="comment">#公开greeting函数，可以引用</span></span><br><span class="line">    <span class="keyword">if</span> len(name) &gt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> _private(name)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'bye'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h1><p><a href="https://pypi.org" target="_blank" rel="noopener">搜索第三方库</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装第三方模块</span></span><br><span class="line">pip install xxx<span class="comment">#安装库</span></span><br></pre></td></tr></table></figure>
+<h1 id="安装常用模块（Anaconda）"><a href="#安装常用模块（Anaconda）" class="headerlink" title="安装常用模块（Anaconda）"></a>安装常用模块（Anaconda）</h1><p><a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">Anaconda内置多种第三方库</a></p>
+<h1 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h1><h2 id="修改解释器模块搜索路径："><a href="#修改解释器模块搜索路径：" class="headerlink" title="修改解释器模块搜索路径："></a>修改解释器模块搜索路径：</h2><p>1.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys<span class="comment">#解释器搜索当前目录、所有已安装的内置模块和第三方模块</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path<span class="comment">#搜索路径存放的变量</span></span><br><span class="line">[<span class="string">''</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python36.zip'</span>, <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6'</span>, ..., <span class="string">'/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path.append(<span class="string">'/Users/michael/my_py_scripts'</span>)<span class="comment">#修改sys.path,添加要搜索的目录，运行结束后失效</span></span><br></pre></td></tr></table></figure>
+<p>2.第二种方法是设置环境变量~PYTHONPATH·，该环境变量的内容会被自动添加到模块搜索路径中。设置方式与设置Path环境变量类似。注意只需要添加你自己的搜索路径，Python自己本身的搜索路径不受影响。</p>
+<h1 id="sys-argv"><a href="#sys-argv" class="headerlink" title="*sys.argv[]"></a>*sys.argv[]</h1><p>sys.argv用list存储了命令行的所有参数。argv至少有一个元素，因为第一个参数永远是该.py文件的名称<br><a href="https://www.cnblogs.com/aland-1415/p/6613449.html" target="_blank" rel="noopener">详细介绍</a></p>
+
       
     </div>
     
@@ -469,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/27/7.27-函数式编程/" rel="next" title="7.27-函数式编程">
-                <i class="fa fa-chevron-left"></i> 7.27-函数式编程
+              <a href="/2019/07/30/7.30-python实例2/" rel="next" title="python实例002：个税计算">
+                <i class="fa fa-chevron-left"></i> python实例002：个税计算
               </a>
             
           </div>
@@ -478,10 +441,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/30/7.30-python实例2/" rel="prev" title="python实例002：个税计算">
-                python实例002：个税计算 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -613,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目："><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法一："><span class="nav-number">2.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法2：利用itertools中的permutations方法"><span class="nav-number">3.</span> <span class="nav-text">方法2：利用itertools中的permutations方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全排列函数combinations和permutations"><span class="nav-number">4.</span> <span class="nav-text">*全排列函数combinations和permutations</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-number">1.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用模块"><span class="nav-number">2.</span> <span class="nav-text">使用模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装第三方模块"><span class="nav-number">3.</span> <span class="nav-text">安装第三方模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装常用模块（Anaconda）"><span class="nav-number">4.</span> <span class="nav-text">安装常用模块（Anaconda）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块搜索路径"><span class="nav-number">5.</span> <span class="nav-text">模块搜索路径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改解释器模块搜索路径："><span class="nav-number">5.1.</span> <span class="nav-text">修改解释器模块搜索路径：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sys-argv"><span class="nav-number">6.</span> <span class="nav-text">*sys.argv[]</span></a></li></ol></div>
             
 
           </div>
