@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="8.8-IO编程">
+<meta property="og:url" content="http://yoursite.com/2019/08/08/8.8-IO编程/index.html">
+<meta property="og:site_name" content="大米之家">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png">
+<meta property="og:updated_time" content="2019-08-08T08:03:32.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8.8-IO编程">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/08/8.8-IO编程/">
+
+
+
+
+
+  <title>8.8-IO编程 | 大米之家</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">大米之家</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">(๑•̀ㅂ•́)و✧鲁班大师，智障二百五</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+    <script src="/live2d-widget/autoload.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/8.8-IO编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="最爱恰米饭">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大米之家">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">8.8-IO编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T16:03:26+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.loli.net/2019/07/18/5d2fe7bd1638960349.png" alt><br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#文件读写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#读文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#open()函数</span></span><br><span class="line">f = open(<span class="string">'demo/IO.txt'</span>,<span class="string">'r'</span>)<span class="comment">#传入文件名和标识符，标识符'r'代表读</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f.read()<span class="comment">#用str对象表示</span></span><br><span class="line"><span class="comment">#如果重复此命令接着读已经无内容</span></span><br></pre></td></tr></table></figure>
+<pre><code>&apos;nihaoya\nxixi&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.read(<span class="number">2</span>)<span class="comment">#read(size)</span></span><br></pre></td></tr></table></figure>
+<pre><code>&apos;ni&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.readline()<span class="comment">#一次读取一行内容</span></span><br></pre></td></tr></table></figure>
+<pre><code>&apos;haoya\n&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.readlines()<span class="comment">#一次读取所有内容并按行返回list</span></span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;nihaoya\n&apos;, &apos;xixi&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">    print(line.strip())<span class="comment">#把末尾的'\n'删掉</span></span><br></pre></td></tr></table></figure>
+<pre><code>nihaoya
+xixi
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.close()<span class="comment">#关闭文件</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#当读写过程中产生IOError时后面的f.close()就不会被调用，因此用try...finally</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_IO</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        f = open(<span class="string">'demo/IO.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">        print(f.read())</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> f:</span><br><span class="line">            f.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read_IO()</span><br></pre></td></tr></table></figure>
+<pre><code>nihaoya
+xixi
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#也可以</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'demo/IO.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br></pre></td></tr></table></figure>
+<pre><code>nihaoya
+xixi
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#file-like Object</span></span><br><span class="line"><span class="comment">#像open()函数返回的这种有个read()方法的对象，在Python中统称为file-like Object</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#标识符</span></span><br><span class="line"><span class="comment">#二进制文件 'rb'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'/Users/michael/test.jpg'</span>, <span class="string">'rb'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</span><br><span class="line"><span class="string">b'\xff\xd8\xff\xe1\x00\x18Exif\x00\x00...'</span> <span class="comment"># 十六进制表示的字节</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#字符编码</span></span><br><span class="line"><span class="comment">#读取非UTF-8编码或编码不规范的文本文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#传入encoding参数和errors参数，如读取GBK编码的文件，忽略UnicodeDecodeError编码错误</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">'/Users/michael/gbk.txt'</span>, <span class="string">'r'</span>, encoding=<span class="string">'gbk'</span>，errors=<span class="string">'ignore'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</span><br><span class="line"><span class="string">'测试'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写文件</span></span><br><span class="line"><span class="comment">#标识符'w','wb'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用close()方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用close()的后果是数据可能只写了一部分到磁盘，剩下的丢失了。所以，还是用with语句来得保险：</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'/Users/michael/test.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">'Hello, world!'</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment">#写入特定编码的文本文件，给open()函数传入encoding参数，将字符串自动转换成指定编码。</span></span><br><span class="line"><span class="comment">#以'w'模式写入文件时，如果文件已存在，会直接覆盖后新写入一个文件）。如果我们希望追加到文件末尾可以传入'a'以追加（append）模式写入。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">'demo/IO.txt'</span>,<span class="string">'a'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#StringIO和BytesIO</span></span><br><span class="line"><span class="comment">#需要对获取到的数据进行操作，但是你并不想把数据写到本地硬盘上，这时候你可以用stringIO</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#StringIO在内存中读写str</span></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line">f = StringIO(<span class="string">'Hello!\nHi!\nGoodbye!'</span>)<span class="comment">#可以为空</span></span><br><span class="line">f.write(<span class="string">'hann'</span>)<span class="comment">#覆盖</span></span><br><span class="line">print(f.getvalue())<span class="comment">#获取写入后的str</span></span><br></pre></td></tr></table></figure>
+<pre><code>hanno!
+Hi!
+Goodbye!
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#BytesIO操作二进制数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line">f = BytesIO(<span class="string">b'\xe4\xb8\xad\xe6\x96\x87'</span>)</span><br><span class="line">f.read()</span><br><span class="line">f.write(<span class="string">'嘻嘻'</span>.encode(<span class="string">'utf-8'</span>))<span class="comment">#往后写入经过UTF-8编码的bytes</span></span><br><span class="line">print(f.getvalue())</span><br></pre></td></tr></table></figure>
+<pre><code>b&apos;\xe4\xb8\xad\xe6\x96\x87\xe5\x98\xbb\xe5\x98\xbb&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#操作文件和目录</span></span><br><span class="line"><span class="comment">#os模块</span></span><br><span class="line"><span class="comment">#Python的os模块封装了操作系统的目录和文件操作，要注意这些函数有的在os模块中，有的在os.path模块中。</span></span><br><span class="line"></span><br><span class="line">os.name<span class="comment">#查看操作系统类型</span></span><br><span class="line"><span class="comment">#posix：Linux、Unix或Mac OS X，nt:Windows系统</span></span><br><span class="line">os.uname()<span class="comment">#获取系统详细信息（在windows系统不可用）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#环境变量</span></span><br><span class="line">os.environ<span class="comment">#查看系统所有环境变量</span></span><br><span class="line">os.environ.get(<span class="string">'key'</span>)<span class="comment">#获取某个环境变量的值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#操作文件和目录</span></span><br><span class="line">os.path.abspath(<span class="string">'.'</span>)<span class="comment">#查看当前目录的绝对路径</span></span><br><span class="line"><span class="comment">#在某个目录下创建一个新目录，首先把新目录的完整路径表示出来:</span></span><br><span class="line">os.path.join(<span class="string">'/Users/michael'</span>, <span class="string">'testdir'</span>)<span class="comment">#合并路径</span></span><br><span class="line"><span class="comment"># 然后创建一个目录:</span></span><br><span class="line">os.mkdir(<span class="string">'/Users/michael/testdir'</span>)</span><br><span class="line"><span class="comment"># 删掉一个目录:</span></span><br><span class="line">os.rmdir(<span class="string">'/Users/michael/testdir'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.split(<span class="string">'/Users/michael/testdir/file.txt'</span>)<span class="comment">#拆分路径</span></span><br><span class="line">(<span class="string">'/Users/michael/testdir'</span>, <span class="string">'file.txt'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(<span class="string">'/path/to/file.txt'</span>)<span class="comment">#直接得到扩展名</span></span><br><span class="line">(<span class="string">'/path/to/file'</span>, <span class="string">'.txt'</span>)</span><br><span class="line"><span class="comment">#这些合并、拆分路径的函数并不要求目录和文件要真实存在，它们只对字符串进行操作。</span></span><br><span class="line"><span class="comment"># 对文件重命名:</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.rename(<span class="string">'test.txt'</span>, <span class="string">'test.py'</span>)</span><br><span class="line"><span class="comment"># 删掉文件:</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.remove(<span class="string">'test.py'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#列出当前目录下的所有目录</span></span><br><span class="line">[x <span class="keyword">for</span> x <span class="keyword">in</span> os.listdir(<span class="string">'.'</span>) <span class="keyword">if</span> os.path.isdir(x)]</span><br><span class="line">[<span class="string">'.lein'</span>, <span class="string">'.local'</span>, <span class="string">'.m2'</span>, <span class="string">'.npm'</span>, <span class="string">'.ssh'</span>, <span class="string">'.Trash'</span>, <span class="string">'.vim'</span>, <span class="string">'Applications'</span>, <span class="string">'Desktop'</span>, ...]</span><br><span class="line"></span><br><span class="line"><span class="comment">#要列出所有的.py文件</span></span><br><span class="line">[x <span class="keyword">for</span> x <span class="keyword">in</span> os.listdir(<span class="string">'.'</span>) <span class="keyword">if</span> os.path.isfile(x) <span class="keyword">and</span> os.path.splitext(x)[<span class="number">1</span>]==<span class="string">'.py'</span>]</span><br><span class="line">[<span class="string">'apis.py'</span>, <span class="string">'config.py'</span>, <span class="string">'models.py'</span>, <span class="string">'pymonitor.py'</span>, <span class="string">'test_db.py'</span>, <span class="string">'urls.py'</span>, <span class="string">'wsgiapp.py'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#复制文件：shutil模块中的copyfile()的函数</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#序列化 picking serialization</span></span><br><span class="line"><span class="comment">#把变量从内存中变成可存储或传输的过程</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pick模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line">d = dict(name = <span class="string">'Bob'</span>,age = <span class="number">20</span>,score = <span class="number">88</span>)</span><br><span class="line">pickle.dumps(d)<span class="comment">#pick.dumps():把任意对象序列化成一个bytes</span></span><br></pre></td></tr></table></figure>
+<pre><code>b&apos;\x80\x03}q\x00(X\x04\x00\x00\x00nameq\x01X\x03\x00\x00\x00Bobq\x02X\x03\x00\x00\x00ageq\x03K\x14X\x05\x00\x00\x00scoreq\x04KXu.&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将bytes写入文件</span></span><br><span class="line">f = open(<span class="string">'dump.txt'</span>,<span class="string">'wb'</span>)</span><br><span class="line">pickle.dump(d,f)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#反序列化</span></span><br><span class="line">f = open(<span class="string">'dump.txt'</span>,<span class="string">'rb'</span>)</span><br><span class="line">d = pickle.load(f)</span><br><span class="line">f.close</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+<pre><code>{&apos;name&apos;: &apos;Bob&apos;, &apos;age&apos;: 20, &apos;score&apos;: 88}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">b'\x80\x03&#125;q\x00(X\x04\x00\x00\x00nameq\x01X\x03\x00\x00\x00Bobq\x02X\x03\x00\x00\x00ageq\x03K\x14X\x05\x00\x00\x00scoreq\x04KXu.'</span></span><br><span class="line">pickle.loads(a)</span><br></pre></td></tr></table></figure>
+<pre><code>{&apos;name&apos;: &apos;Bob&apos;, &apos;age&apos;: 20, &apos;score&apos;: 88}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#JSON</span></span><br><span class="line"><span class="comment">#json模块</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#把python对象变为一个json，dumps()或dump()</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">d = dict(name=<span class="string">'bob'</span>,age=<span class="number">20</span>,score=<span class="number">88</span>)</span><br><span class="line">json.dumps(d)<span class="comment">#返回一个str</span></span><br></pre></td></tr></table></figure>
+<pre><code>&apos;{&quot;name&quot;: &quot;bob&quot;, &quot;age&quot;: 20, &quot;score&quot;: 88}&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#把json反序列化为python对象</span></span><br><span class="line">json_str = <span class="string">'&#123;"name": "bob", "age": 20, "score": 88&#125;'</span></span><br><span class="line">json.loads(json_str)</span><br></pre></td></tr></table></figure>
+<pre><code>{&apos;name&apos;: &apos;bob&apos;, &apos;age&apos;: 20, &apos;score&apos;: 88}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#json进阶</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age, score)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">s = Student(<span class="string">'Bob'</span>, <span class="number">20</span>, <span class="number">88</span>)</span><br><span class="line">print(json.dumps(s))</span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-23-dcd84d990bc5&gt; in &lt;module&gt;
+      9 
+     10 s = Student(&apos;Bob&apos;, 20, 88)
+---&gt; 11 print(json.dumps(s))
+
+
+/myblog/Anaconda3/anaconda3/lib/python3.7/json/__init__.py in dumps(obj, skipkeys, ensure_ascii, check_circular, allow_nan, cls, indent, separators, default, sort_keys, **kw)
+    229         cls is None and indent is None and separators is None and
+    230         default is None and not sort_keys and not kw):
+--&gt; 231         return _default_encoder.encode(obj)
+    232     if cls is None:
+    233         cls = JSONEncoder
+
+
+/myblog/Anaconda3/anaconda3/lib/python3.7/json/encoder.py in encode(self, o)
+    197         # exceptions aren&apos;t as detailed.  The list call should be roughly
+    198         # equivalent to the PySequence_Fast that &apos;&apos;.join() would do.
+--&gt; 199         chunks = self.iterencode(o, _one_shot=True)
+    200         if not isinstance(chunks, (list, tuple)):
+    201             chunks = list(chunks)
+
+
+/myblog/Anaconda3/anaconda3/lib/python3.7/json/encoder.py in iterencode(self, o, _one_shot)
+    255                 self.key_separator, self.item_separator, self.sort_keys,
+    256                 self.skipkeys, _one_shot)
+--&gt; 257         return _iterencode(o, 0)
+    258 
+    259 def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
+
+
+/myblog/Anaconda3/anaconda3/lib/python3.7/json/encoder.py in default(self, o)
+    177 
+    178         &quot;&quot;&quot;
+--&gt; 179         raise TypeError(f&apos;Object of type {o.__class__.__name__} &apos;
+    180                         f&apos;is not JSON serializable&apos;)
+    181 
+
+
+TypeError: Object of type Student is not JSON serializable
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#转换函数：Student实例首先被student2dict()函数转换成dict，然后再被顺利序列化为JSON</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">student2dict</span><span class="params">(std)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'name'</span>: std.name,</span><br><span class="line">        <span class="string">'age'</span>: std.age,</span><br><span class="line">        <span class="string">'score'</span>: std.score</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可选参数default就是把任意一个对象变成一个可序列为JSON的对象</span></span><br><span class="line">print(json.dumps(s, default=student2dict))</span><br></pre></td></tr></table></figure>
+<pre><code>{&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 20, &quot;score&quot;: 88}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(json.dumps(s, default=<span class="keyword">lambda</span> obj: obj.__dict__))</span><br><span class="line"><span class="comment">#通常class的实例都有一个__dict__属性，他就是一个dict，用来存储实例变量，有少量例外：比如定义了__slots__的class</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#反序列化</span></span><br><span class="line"><span class="comment">#转化函数：把dict转换为实例</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dict2student</span><span class="params">(d)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> Student(d[<span class="string">'name'</span>], d[<span class="string">'age'</span>], d[<span class="string">'score'</span>])</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/8.7-错误、调试和测试/" rel="next" title="错误、调试和测试">
+                <i class="fa fa-chevron-left"></i> 错误、调试和测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/08/8.7-python实例006/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="最爱恰米饭">
+            
+              <p class="site-author-name" itemprop="name">最爱恰米饭</p>
+              <p class="site-description motion-element" itemprop="description">你看见过我的小熊吗？</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+    <script src="/live2d-widget/autoload.js"></script>
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">最爱恰米饭</span>
+
+
+  
+</div>
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://mingo.pro">zym的MacBook pro</a> 强力驱动</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+    
+    
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
