@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="大米之家">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qny.zuoyiming.com/2019-08-09-15653113443182.jpg">
-<meta property="og:updated_time" content="2019-08-09T03:22:02.031Z">
+<meta property="og:updated_time" content="2019-08-13T11:55:21.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 常用终端命令">
 <meta name="twitter:image" content="http://qny.zuoyiming.com/2019-08-09-15653113443182.jpg">
@@ -387,76 +387,12 @@
 
       
         <p><img src="http://qny.zuoyiming.com/2019-08-09-15653113443182.jpg" alt><br><a id="more"></a></p>
-<h1 id="1-终端命令格式"><a href="#1-终端命令格式" class="headerlink" title="1. 终端命令格式"></a>1. 终端命令格式</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> [-options] [parameter]</span><br></pre></td></tr></table></figure>
-<p>说明：</p>
-<ul>
-<li><code>command</code>：命令名，相应功能的英文单词或单词的缩写</li>
-<li><code>[-options]</code>：选项，可用来对命令进行控制，也可以省略</li>
-<li><code>parameter</code>：传给命令的参数，可以是 <strong>零个</strong>、<strong>一个</strong> 或者 <strong>多个</strong></li>
-</ul>
-<blockquote>
-<p><code>[]</code> 代表可选 </p>
-</blockquote>
-<h1 id="2-常用-Linux-命令"><a href="#2-常用-Linux-命令" class="headerlink" title="2. 常用 Linux 命令"></a>2. 常用 Linux 命令</h1><table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令</th>
-<th>对应英文</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01</td>
-<td>ls</td>
-<td>list</td>
-<td>查看当前文件夹下的内容</td>
-</tr>
-<tr>
-<td>02</td>
-<td>pwd</td>
-<td>print work directory</td>
-<td>查看当前所在文件夹</td>
-</tr>
-<tr>
-<td>03</td>
-<td>cd [目录名]</td>
-<td>change directory</td>
-<td>切换文件夹</td>
-</tr>
-<tr>
-<td>04</td>
-<td>touch [文件名]</td>
-<td>touch</td>
-<td>如果文件不存在，新建文件</td>
-</tr>
-<tr>
-<td>05</td>
-<td>mkdir [目录名]</td>
-<td>make directory</td>
-<td>创建目录</td>
-</tr>
-<tr>
-<td>06</td>
-<td>rm [文件名]/(rm -r [目录名])</td>
-<td>remove</td>
-<td>删除指定的文件名</td>
-</tr>
-<tr>
-<td>07</td>
-<td>clear</td>
-<td>clear</td>
-<td>清屏</td>
-</tr>
-</tbody>
-</table>
-<h1 id="3-查阅命令帮助信息"><a href="#3-查阅命令帮助信息" class="headerlink" title="3. 查阅命令帮助信息"></a>3. 查阅命令帮助信息</h1><h2 id="3-1-help"><a href="#3-1-help" class="headerlink" title="3.1 --help"></a>3.1 <code>--help</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<h1 id="1-查阅命令帮助信息"><a href="#1-查阅命令帮助信息" class="headerlink" title="1 查阅命令帮助信息"></a>1 查阅命令帮助信息</h1><h2 id="1-1-help"><a href="#1-1-help" class="headerlink" title="1.1 --help"></a>1.1 <code>--help</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
 <p>说明：</p>
 <ul>
 <li>显示 <code>command</code> 命令的帮助信息</li>
 </ul>
-<h2 id="3-2-man"><a href="#3-2-man" class="headerlink" title="3.2 man"></a>3.2 man</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-2-man"><a href="#1-2-man" class="headerlink" title="1.2 man"></a>1.2 man</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
 <p>说明：</p>
 <ul>
 <li>查阅 <code>command</code> 命令的使用手册</li>
@@ -499,6 +435,440 @@
 </tr>
 </tbody>
 </table>
+<h1 id="2-常用-Linux-命令"><a href="#2-常用-Linux-命令" class="headerlink" title="2. 常用 Linux 命令"></a>2. 常用 Linux 命令</h1><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>ls</td>
+<td>list</td>
+<td>查看当前文件夹下的内容</td>
+</tr>
+<tr>
+<td>02</td>
+<td>pwd</td>
+<td>print work directory</td>
+<td>查看当前所在文件夹</td>
+</tr>
+<tr>
+<td>03</td>
+<td>cd [目录名]</td>
+<td>change directory</td>
+<td>切换文件夹</td>
+</tr>
+<tr>
+<td>04</td>
+<td>touch [文件名]</td>
+<td>touch</td>
+<td>如果文件不存在，新建文件</td>
+</tr>
+<tr>
+<td>05</td>
+<td>mkdir [目录名]</td>
+<td>make directory</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>06</td>
+<td>rm [文件名]</td>
+<td>remove</td>
+<td>删除指定的文件名</td>
+</tr>
+<tr>
+<td>07</td>
+<td>clear</td>
+<td>clear</td>
+<td>清屏</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-文件和目录常用命令"><a href="#3-文件和目录常用命令" class="headerlink" title="3.文件和目录常用命令"></a>3.文件和目录常用命令</h1><h2 id="3-1-ls"><a href="#3-1-ls" class="headerlink" title="3.1 ls"></a>3.1 <code>ls</code></h2><h3 id="3-1-1-ls-常用选项"><a href="#3-1-1-ls-常用选项" class="headerlink" title="3.1.1 ls 常用选项"></a>3.1.1 ls 常用选项</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>显示指定目录下所有子目录与文件，包括隐藏文件</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>以列表方式显示文件的详细信息</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>配合 -l 以人性化的方式显示文件大小</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-1-2-ls-通配符的使用"><a href="#3-1-2-ls-通配符的使用" class="headerlink" title="3.1.2 ls 通配符的使用"></a>3.1.2 <code>ls</code> 通配符的使用</h3><table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>代表任意(0)个数个字符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>代表任意一个字符，至少 1 个</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>表示可以匹配字符组中的任一一个</td>
+</tr>
+<tr>
+<td>[abc]</td>
+<td>匹配 a、b、c 中的任意一个</td>
+</tr>
+<tr>
+<td>[a-f]</td>
+<td>匹配从 a 到 f 范围内的的任意一个字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-2-cd"><a href="#3-2-cd" class="headerlink" title="3.2 cd"></a>3.2 <code>cd</code></h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cd</td>
+<td>切换到当前用户的主目录(/home/用户目录)</td>
+</tr>
+<tr>
+<td>cd ~</td>
+<td>切换到当前用户的主目录(/home/用户目录)</td>
+</tr>
+<tr>
+<td>cd .</td>
+<td>保持在当前目录不变</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>切换到上级目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td>可以在最近两次工作目录之间来回切换</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-3-创建和删除操作"><a href="#3-3-创建和删除操作" class="headerlink" title="3.3. 创建和删除操作"></a>3.3. 创建和删除操作</h2><h3 id="3-3-1-touch"><a href="#3-3-1-touch" class="headerlink" title="3.3.1 touch"></a>3.3.1 <code>touch</code></h3><ul>
+<li>创建文件或修改文件时间<ul>
+<li>如果文件 <strong>不存在</strong>，可以创建一个空白文件</li>
+<li>如果文件 <strong>已经存在</strong>，可以修改文件的末次修改日期</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-2-mkdir"><a href="#3-3-2-mkdir" class="headerlink" title="3.3.2 mkdir"></a>3.3.2 <code>mkdir</code></h3><ul>
+<li>创建一个新的目录</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p</td>
+<td>可以递归创建目录</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>新建目录的名称</strong> 不能与当前目录中 <strong>已有的目录或文件</strong> 同名</p>
+</blockquote>
+<h3 id="3-3-3-rm"><a href="#3-3-3-rm" class="headerlink" title="3.3.3 rm"></a>3.3.3 <code>rm</code></h3><ul>
+<li>删除文件或目录</li>
+<li><code>rm *</code></li>
+</ul>
+<blockquote>
+<p>使用 <code>rm</code> 命令要小心，因为文件删除后不能恢复</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归地删除目录下的内容，<strong>删除文件夹</strong> 时必须加此参数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-4-拷贝和移动文件"><a href="#3-4-拷贝和移动文件" class="headerlink" title="3.4 拷贝和移动文件"></a>3.4 拷贝和移动文件</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>tree [目录名]</td>
+<td>tree</td>
+<td>以树状图列出文件目录结构</td>
+</tr>
+<tr>
+<td>02</td>
+<td>cp 源文件 目标文件</td>
+<td>copy</td>
+<td>复制文件或者目录</td>
+</tr>
+<tr>
+<td>03</td>
+<td>mv 源文件 目标文件</td>
+<td>move</td>
+<td>移动文件或者目录／文件或者目录重命名</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-4-1-tree"><a href="#3-4-1-tree" class="headerlink" title="3.4.1 tree"></a>3.4.1 <code>tree</code></h3><ul>
+<li><code>tree</code> 命令可以以树状图列出文件目录结构</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>只显示目录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-4-2-cp"><a href="#3-4-2-cp" class="headerlink" title="3.4.2 cp"></a>3.4.2 <code>cp</code></h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>覆盖文件前提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>若给出的源文件是目录文件，则 cp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-3-mv"><a href="#4-3-mv" class="headerlink" title="4.3 mv"></a>4.3 <code>mv</code></h3><ul>
+<li><code>mv</code> 命令可以用来 <strong>移动</strong> <strong>文件</strong> 或 <strong>目录</strong>，也可以给 <strong>文件或目录重命名</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>覆盖文件前提示</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-5-查看文件内容"><a href="#3-5-查看文件内容" class="headerlink" title="3.5 查看文件内容"></a>3.5 查看文件内容</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>cat 文件名</td>
+<td>concatenate</td>
+<td>查看文件内容、创建文件、文件合并、追加文件内容等功能</td>
+</tr>
+<tr>
+<td>02</td>
+<td>more 文件名</td>
+<td>more</td>
+<td>分屏显示文件内容</td>
+</tr>
+<tr>
+<td>03</td>
+<td>grep 搜索文本 文件名</td>
+<td>grep</td>
+<td>搜索文本文件内容</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-5-1-cat"><a href="#3-5-1-cat" class="headerlink" title="3.5.1 cat"></a>3.5.1 <code>cat</code></h3><ul>
+<li><code>cat</code> 命令可以用来 <strong>查看文件内容</strong>、<strong>创建文件</strong>、<strong>文件合并</strong>、<strong>追加文件内容</strong> 等功能</li>
+<li><code>cat</code> 会一次显示所有的内容，适合 <strong>查看内容较少</strong> 的文本文件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>对非空输出行编号</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>对输出的所有行编号</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Linux 中还有一个 <code>nl</code> 的命令和 <code>cat -b</code> 的效果等价</p>
+</blockquote>
+<h3 id="3-5-2-more"><a href="#3-5-2-more" class="headerlink" title="3.5.2 more"></a>3.5.2 <code>more</code></h3><ul>
+<li><code>more</code> 命令可以用于分屏显示文件内容，每次只显示一页内容</li>
+<li>适合于 <strong>查看内容较多</strong>的文本文件</li>
+</ul>
+<p>使用 <code>more</code> 的操作键：</p>
+<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空格键</td>
+<td>显示手册页的下一屏</td>
+</tr>
+<tr>
+<td>Enter 键</td>
+<td>一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>回滚一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>前滚一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>/word</td>
+<td>搜索 <strong>word</strong> 字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-5-3-grep"><a href="#3-5-3-grep" class="headerlink" title="3.5.3 grep"></a>3.5.3 <code>grep</code></h3><ul>
+<li>Linux 系统中 <code>grep</code> 命令是一种强大的文本搜索工具</li>
+<li><code>grep</code>允许对文本文件进行 <strong>模式</strong>查找，所谓模式查找，又被称为正则表达式，在就业班会详细讲解</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>显示匹配行及行号</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示不包含匹配文本的所有行（相当于求反）</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>忽略大小写</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>常用的两种模式查找</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^a</td>
+<td>行首，搜寻以 <strong>a</strong> 开头的行</td>
+</tr>
+<tr>
+<td>ke$</td>
+<td>行尾，搜寻以 <strong>ke</strong> 结束的行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-6-其他"><a href="#3-6-其他" class="headerlink" title="3.6 其他"></a>3.6 其他</h2><h3 id="3-6-1-echo-文字内容"><a href="#3-6-1-echo-文字内容" class="headerlink" title="3.6.1 echo 文字内容"></a>3.6.1 <code>echo 文字内容</code></h3><ul>
+<li><code>echo</code> 会在终端中显示参数指定的文字，通常会和 <strong>重定向</strong> 联合使用</li>
+</ul>
+<h3 id="3-6-2-重定向-gt-和-gt-gt"><a href="#3-6-2-重定向-gt-和-gt-gt" class="headerlink" title="3.6.2 重定向 &gt; 和 &gt;&gt;"></a>3.6.2 重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></h3><ul>
+<li>Linux 允许将命令执行结果 <strong>重定向</strong>到一个 <strong>文件</strong></li>
+<li>将本应显示在<strong>终端上的内容</strong> <strong>输出／追加</strong> 到<strong>指定文件中</strong></li>
+</ul>
+<p>其中</p>
+<ul>
+<li><code>&gt;</code> 表示输出，会覆盖文件原有的内容</li>
+<li><code>&gt;&gt;</code> 表示追加，会将内容追加到已有文件的末尾</li>
+<li><code>ls -lh &gt;&gt;a</code></li>
+</ul>
+<h3 id="3-6-3-管道"><a href="#3-6-3-管道" class="headerlink" title="3.6.3 管道 |"></a>3.6.3 管道 <code>|</code></h3><ul>
+<li>Linux 允许将 <strong>一个命令的输出</strong> 可以<strong>通过管道</strong> 做为 <strong>另一个命令的输入</strong></li>
+<li>可以理解现实生活中的管子，管子的一头塞东西进去，另一头取出来，这里 <code>|</code> 的左右分为两端，左端塞东西（写），右端取东西（读）</li>
+</ul>
+<p>常用的管道命令有：</p>
+<ul>
+<li><code>more</code>：分屏显示内容</li>
+<li><code>grep</code>：在命令执行结果的基础上查询指定的文本</li>
+<li><code>ls -lh | grep 17:45</code></li>
+</ul>
 
       
     </div>
@@ -669,7 +1039,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-终端命令格式"><span class="nav-text">1. 终端命令格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-常用-Linux-命令"><span class="nav-text">2. 常用 Linux 命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-查阅命令帮助信息"><span class="nav-text">3. 查阅命令帮助信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-help"><span class="nav-text">3.1 --help</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-man"><span class="nav-text">3.2 man</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-查阅命令帮助信息"><span class="nav-text">1 查阅命令帮助信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-help"><span class="nav-text">1.1 --help</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-man"><span class="nav-text">1.2 man</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-常用-Linux-命令"><span class="nav-text">2. 常用 Linux 命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-文件和目录常用命令"><span class="nav-text">3.文件和目录常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-ls"><span class="nav-text">3.1 ls</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-ls-常用选项"><span class="nav-text">3.1.1 ls 常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-ls-通配符的使用"><span class="nav-text">3.1.2 ls 通配符的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-cd"><span class="nav-text">3.2 cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-创建和删除操作"><span class="nav-text">3.3. 创建和删除操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-1-touch"><span class="nav-text">3.3.1 touch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-2-mkdir"><span class="nav-text">3.3.2 mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-3-rm"><span class="nav-text">3.3.3 rm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-拷贝和移动文件"><span class="nav-text">3.4 拷贝和移动文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1-tree"><span class="nav-text">3.4.1 tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2-cp"><span class="nav-text">3.4.2 cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-mv"><span class="nav-text">4.3 mv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-查看文件内容"><span class="nav-text">3.5 查看文件内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-cat"><span class="nav-text">3.5.1 cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-more"><span class="nav-text">3.5.2 more</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-3-grep"><span class="nav-text">3.5.3 grep</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-其他"><span class="nav-text">3.6 其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-1-echo-文字内容"><span class="nav-text">3.6.1 echo 文字内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-2-重定向-gt-和-gt-gt"><span class="nav-text">3.6.2 重定向 &gt; 和 &gt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-3-管道"><span class="nav-text">3.6.3 管道 |</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
